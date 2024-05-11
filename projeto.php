@@ -15,7 +15,10 @@
                     if(count($projetos) > 0){      
                 ?>
                 <div class="container">
-                <h1>Projetos</h1>
+                <div class="d-flex justify-content-between">
+                    <h1>Projetos</h1>
+                    <button class="btn btn-success h-50 mt-3"><a href="crud/cadastrar_projetoform.php" class="text-decoration-none text-light">Cadastrar</a></button>
+                </div>
                 <div class="table-tarefas">
                 <table class="table table-hover">
                     <thead>

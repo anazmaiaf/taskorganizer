@@ -27,16 +27,16 @@
 
 <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="staticBackdropLabel">Menu</h5>
+    <h3 class="offcanvas-title" id="staticBackdropLabel">Menu</h3>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
     <div>
-        <div>
-            <a href="projeto.php">Projetos</a>
+        <div class="mt-3">
+            <a href="projeto.php" class="text-decoration-none text-light fs-5">Projetos</a>
         </div>
-        <div>
-            <a href="tarefa.php">Tarefas</a>
+        <div class="mt-3">
+            <a href="tarefa.php" class="text-decoration-none text-light fs-5">Tarefas</a>
         </div>
     </div>
   </div>
