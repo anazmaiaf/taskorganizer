@@ -1,8 +1,5 @@
 <?php
-    require 'database/db_config.php';
-    if(!isset($_SESSION['id'])){
-        header('Location: login/loginform.php');
-    }
+    require '../database/db_config.php';
 ?>
 
 <!DOCTYPE html>
@@ -16,8 +13,8 @@
 </head>
 <body class="h-100" data-bs-theme="dark">
     <?php
-    require 'templates/header.php';
-    require 'templates/navbar.php';
+    require '../templates/header.php';
+    require '../templates/navbar.php';
     ?>
             <div class="col py-3">
                 <h1 class="mx-5 mt-5 text-center">Seja bem vindo <?php echo $_SESSION['username']?>!</h1>
@@ -48,5 +45,5 @@
         </div>
     </div>
     <?php
-    require 'templates/footer.php';
+    require '../templates/footer.php';
     ?>

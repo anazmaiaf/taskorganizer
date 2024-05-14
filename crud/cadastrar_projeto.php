@@ -1,11 +1,6 @@
 <?php
     require '../templates/header.php';
     require '../templates/navbar.php';
-    session_start();
-    require 'database/db_config.php';
-    if(!isset($_SESSION['id'])){
-        header('Location: login/loginform.php');
-    }
 ?>
 <h1 class="text-center">Cadastrar projeto</h1>
 <section>
