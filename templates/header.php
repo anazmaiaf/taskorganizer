@@ -12,3 +12,9 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body class="h-100 bg-body-tetiary">
+<?php
+    session_start();
+    require 'database/db_config.php';
+    if(!isset($_SESSION['id'])){
+        header('Location: ../login/loginform.php');
+    }

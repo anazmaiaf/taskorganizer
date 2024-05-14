@@ -1,23 +1,24 @@
 <?php
-    session_start();
+    require 'database/db_config.php';
     if(!isset($_SESSION['id'])){
         header('Location: login/loginform.php');
     }
-    require 'database/db_config.php';
 
     $sql = "SELECT * FROM projetos";
     $result = $conn->prepare($sql);
     $result -> execute();
     $projetos = $result-> fetchAll(PDO::FETCH_ASSOC);
-    require 'templates/header.php';
-    require 'templates/navbar.php';
 
-                    if(count($projetos) > 0){      
-                ?>
+    require 'templates/header.php';
+    require 'templates/navbar.php';    
+?>
                 <div class="container">
+                    <?php
+                        if(count($projetos) > 0){
+                    ?>
                 <div class="d-flex justify-content-between">
                     <h1>Projetos</h1>
-                    <button class="btn btn-success h-50 mt-3"><a href="crud/cadastrar_projetoform.php" class="text-decoration-none text-light">Cadastrar</a></button>
+                    <button class="btn btn-success h-50 mt-3"><a href="crud/cadastrar_projeto.php" class="text-decoration-none text-light">Cadastrar</a></button>
                 </div>
                 <div class="table-tarefas">
                 <table class="table table-hover">

@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    require 'database/db_config.php';
     if(!isset($_SESSION['id'])){
         header('Location: login/loginform.php');
     }

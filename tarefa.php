@@ -1,6 +1,5 @@
 <?php
-    require("database/db_config.php");
-    session_start();
+    require 'database/db_config.php';
     if(!isset($_SESSION['id'])){
         header('Location: login/loginform.php');
     }
@@ -20,7 +19,7 @@
                 ?>
                 <div class="d-flex justify-content-between">
                     <h1>Tarefas</h1>
-                    <button class="btn btn-success h-50 mt-3"><a href="crud/cadastrar_tarefaform.php" class="text-decoration-none text-light">Cadastrar</a></button>
+                    <button class="btn btn-success h-50 mt-3"><a href="crud/cadastrar_tarefa.php" class="text-decoration-none text-light">Cadastrar</a></button>
                 </div>
                 <div class="table-tarefas table-responsive">
                 <table class="table table-hover">
