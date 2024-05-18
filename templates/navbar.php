@@ -5,9 +5,9 @@
                     <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
                     <i class="fa-solid fa-bars"></i>
                     </button>
-                    <li><a href="index.php" class="nav-link px-2 link-secondary">Home</a></li>
-                    <li><a href="projeto.php" class="nav-link px-2 link-secondary">Projetos</a></li>
-                    <li><a href="tarefa.php" class="nav-link px-2 link-secondary">Tarefas</a></li>
+                    <li><a href="../dashboard/index.php" class="nav-link px-2 link-secondary">Home</a></li>
+                    <li><a href="../dashboard/projeto.php" class="nav-link px-2 link-secondary">Projetos</a></li>
+                    <li><a href="../dashboard/tarefa.php" class="nav-link px-2 link-secondary">Tarefas</a></li>
                 </ul>
 
                 <div class="dropdown">
@@ -16,7 +16,7 @@
                         <span class="d-none d-sm-inline mx-1"><?php echo $_SESSION['username']?></span>
                     </a>
                     <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="login/logout.php">Sair da conta</a></li>
+                        <li><a class="dropdown-item" href="../login/logout.php">Sair da conta</a></li>
                     </ul>
                 </div>
             </div>

@@ -1,11 +1,6 @@
 <?php
     require '../templates/header.php';
     require '../templates/navbar.php';
-    session_start();
-    require 'database/db_config.php';
-    if(!isset($_SESSION['id'])){
-        header('Location: login/loginform.php');
-    }
 ?>
 <h1 class="text-center">Cadastrar tarefa</h1>
 <section>
@@ -73,7 +68,8 @@
                 </form>
                 <div class="d-flex justify-content-center">
                     <form action="../tarefa.php">
-                        <input type="submit" value="Cadastrar" class="btn btn-success">
+                        <button class="btn btn-danger"><a href="../dashboard/projeto.php" class="text-decoration-none text-white">Cancelar</a></button>
+                        <button class="btn btn-success"><a href="../dashboard/projeto.php" class="text-decoration-none text-white">Cadastrar</a></button>
                     </form>
                 </div>
             </div>
