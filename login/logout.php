@@ -3,4 +3,4 @@ session_start();
 session_unset();
 session_destroy();
 
-header("Location: ../../login/loginform.php");
+header("Location: ../login/loginform.php");

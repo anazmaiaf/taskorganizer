@@ -53,9 +53,9 @@
                     </div>
                 </form>
                 <div class="d-flex justify-content-center">
-                    <form action="../tarefa.php">
-                        <input type="submit" value="Cadastrar" class="btn btn-success">
-                        <input type="submit" value="Cancelar" class="btn btn-danger">
+                    <form action="../projeto.php">
+                    <button class="btn btn-danger"><a href="../dashboard/projeto.php" class="text-decoration-none text-white">Cancelar</a></button>
+                    <button class="btn btn-success"><a href="../dashboard/projeto.php" class="text-decoration-none text-white">Cadastrar</a></button>
                     </form>
                 </div>
             </div>
