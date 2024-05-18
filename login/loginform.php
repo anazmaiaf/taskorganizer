@@ -21,7 +21,7 @@
                   <h4 class="mt-1 mb-5 pb-1">Fazer Login</h4>
                 </div>
 
-                <form method="POST" action="login/login.php" data-parsley-validate>
+                <form method="POST" action="login.php" data-parsley-validate>
 
                   <div data-mdb-input-init class="form-outline mb-4">
                     <input name="user" class="form-control"

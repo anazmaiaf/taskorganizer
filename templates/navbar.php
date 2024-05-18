@@ -22,9 +22,6 @@
             </div>
         </div>
     </header>
-
-
-
 <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
   <div class="offcanvas-header">
     <h3 class="offcanvas-title" id="staticBackdropLabel">Menu</h3>

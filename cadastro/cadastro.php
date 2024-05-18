@@ -11,5 +11,5 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email
     $result->bindValue(':password', $password);
     $result->bindValue(':email', $email);
     $result->execute();
-    header('Location: ../../index.php?success=ok');
+    header('Location: ../dashboard/index.php?success=ok');
 }
