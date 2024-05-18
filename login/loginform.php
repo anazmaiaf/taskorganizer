@@ -1,24 +1,14 @@
-<?php
-  session_start();
-  require '../database/db_config.php';
-  if(!isset($_SESSION['id'])){
-      header('Location: ../login/loginform.php');
-  }
-?>
 <!DOCTYPE html>
-<html lang="pt-br" class="h-100" data-bs-theme="dark" >
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Organizer</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
-<body class="h-100 bg-body-tetiary">
-<section class="h-100 gradient-form">
+<body>
+<section class="h-100 gradient-form" style="background-color: #eee;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-xl-10">
@@ -27,21 +17,28 @@
             <div class="col-lg-6">
               <div class="card-body p-md-5 mx-md-4">
 
-                <div class="text-center text-white">
+                <div class="text-center">
                   <h4 class="mt-1 mb-5 pb-1">Fazer Login</h4>
                 </div>
+  
+  
+                <script>
+                function redirectToLogin() {
+                  window.location.href = "/taskorganizer/login/login.php";
+                }
+                </script>
 
-                <form method="POST" action="../../login/login.php" data-parsley-validate>
+                <form method="POST" action="javascript:redirectToLogin()" data-parsley-validate>
 
                   <div data-mdb-input-init class="form-outline mb-4">
-                    <label class="form-label text-white" for="user">Usuário</label>
                     <input name="user" class="form-control"
-                      placeholder="Nome de usuário" required/>                   
+                      placeholder="Nome de usuário" required/>
+                    <label class="form-label" for="user">Usuário</label>
                   </div>
 
                   <div data-mdb-input-init class="form-outline mb-4">
-                    <label class="form-label text-white" for="password">Senha</label>
                     <input type="password" name="password" class="form-control" placeholder="Senha" required/>
+                    <label class="form-label" for="password">Senha</label>
                   </div>
 
                   <div class="text-center pt-1 mb-5 pb-1">
@@ -50,8 +47,8 @@
                   </div>
 
                   <div class="d-flex align-items-center justify-content-center pb-4">
-                    <p class="mb-0 me-2 text-white">Não tem uma conta?</p>
-                    <a class="text-decoration-none" style="color: #00b3b0;" href="../cadastro/cadastroform.php">Criar conta</a>
+                    <p class="mb-0 me-2">Não tem uma conta?</p>
+                    <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-danger"><a id="button-style" href="../cadastro/cadastroform.php">Criar conta</a></button>
                   </div>
                 </form>
 

@@ -17,9 +17,11 @@ if(isset($_POST['user']) && isset($_POST['password'])){
         $_SESSION['id'] = $dado['iduser'];
         $_SESSION['username'] = $dado['username'];
     
-        header('Location: dashboard/index.php'); 
+        header('Location: /taskorganizer/dashboard/index.php'); 
+        exit(); // Adicionado para garantir que o script pare de ser executado após o redirecionamento
     } else {
-        header('Location: ../loginform.php');
+        header('Location: /taskorganizer/login/loginform.php');
+        exit(); // Adicionado para garantir que o script pare de ser executado após o redirecionamento
     }
     
 }
