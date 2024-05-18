@@ -21,7 +21,7 @@
                   <h4 class="mt-1 mb-5 pb-1">Criar conta</h4>
                 </div>
 
-                <form method="POST" action="cadastro/cadastro.php">
+                <form method="POST" action="cadastro.php" data-parsley-validate>
 
                   <div data-mdb-input-init class="form-outline mb-4">
                     <input name="username" class="form-control"

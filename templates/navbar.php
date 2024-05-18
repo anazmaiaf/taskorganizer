@@ -16,7 +16,7 @@
                         <span class="d-none d-sm-inline mx-1"><?php echo $_SESSION['username']?></span>
                     </a>
                     <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="login/logout.php">Sair da conta</a></li>
+                        <li><a class="dropdown-item" href="../login/logout.php">Sair da conta</a></li>
                     </ul>
                 </div>
             </div>
