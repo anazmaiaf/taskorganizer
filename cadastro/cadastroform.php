@@ -45,7 +45,7 @@
 
                   <div class="d-flex align-items-center justify-content-center pb-4">
                     <p class="mb-0 me-2 text-white">Já tem uma conta?</p>
-                    <a class="text-decoration-none" style="color: #00b3b0;" href="../cadastro/cadastroform.php">Criar conta</a>
+                    <a class="text-decoration-none" style="color: #00b3b0;" href="../login/loginform.php">Fazer Login</a>
                   </div>
                 </form>
 

@@ -17,9 +17,10 @@ if(isset($_POST['user']) && isset($_POST['password'])){
         $_SESSION['id'] = $dado['iduser'];
         $_SESSION['username'] = $dado['username'];
     
-        header('Location: ../dashboard/index.php'); 
+        header('Location: ../dashboard/index.php');
     } else {
-        header('Location: ../loginform.php');
+        header('Location: loginform.php');
+        
     }
     
 }
