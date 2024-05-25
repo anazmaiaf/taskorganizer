@@ -1,22 +1,26 @@
 <?php
     require '../database/db_config.php';
 
-    $sql = "SELECT * FROM tarefas";
+    $sql = "SELECT t.*, p.nome AS projetos_nome 
+            FROM tarefas t 
+            JOIN projetos p ON t.projetos_idprojetos = p.idprojetos";
     $result = $conn->prepare($sql);
     $result -> execute();
     $tarefas = $result-> fetchAll(PDO::FETCH_ASSOC);
-
+    
     require '../templates/header.php';
     require '../templates/navbar.php';
 ?>
 
    <div class="container">
+    <div class="d-flex justify-content-between">
+        <h1>Tarefas</h1>
+        <button class="btn btn-success h-50 mt-3"><a href="../crud/c_tarefaform.php" class="text-decoration-none text-light">Cadastrar</a></button>
+    </div>
                 <?php
                     if(count($tarefas) > 0){      
                 ?>
                 <div class="d-flex justify-content-between">
-                    <h1>Tarefas</h1>
-                    <button class="btn btn-success h-50 mt-3"><a href="../crud/cadastrar_tarefa.php" class="text-decoration-none text-light">Cadastrar</a></button>
                 </div>
                 <div class="table-tarefas table-responsive">
                 <table class="table table-hover">
@@ -42,7 +46,7 @@
                                 echo "<td>" . $tarefa['data_entrega'] . "</td>";
                                 echo "<td>" . $tarefa['status'] . "</td>";
                                 echo "<td>" . $tarefa['prioridade'] . "</td>";
-                                echo "<td>" . $tarefa['projetos_idprojetos'] . "</td>";
+                                echo "<td>" . $tarefa['projetos_nome'] . "</td>";
                                 echo "<td><button type='button' class='btn btn-warning'>Editar</button>
                                       <button type='button' class='btn btn-danger'>Apagar</button></td>";
                                 echo "</tr>";
@@ -53,7 +57,6 @@
                 <?php
                     } else {
                 ?>
-                <h1>Tarefas</h1>
                 <div class="table-tarefas">
                 <table class="table table-hover">
                     <thead>
