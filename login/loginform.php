@@ -24,7 +24,7 @@
       </div>';
       } else if (isset($_GET['stmt']) && $_GET['stmt'] == 'naologado'){
         echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>USuário ou senha inválidos.</strong>
+        <strong>Usuário ou senha inválidos. Tente novamente.</strong>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>';
       }

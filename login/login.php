@@ -20,7 +20,5 @@ if(isset($_POST['user']) && isset($_POST['password'])){
         header('Location: ../dashboard/index.php');
     } else {
         header('Location: loginform.php?stmt=naologado');
-        
     }
-    
 }

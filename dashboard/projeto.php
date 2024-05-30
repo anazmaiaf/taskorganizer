@@ -10,12 +10,14 @@
     require '../templates/navbar.php';    
 ?>
                 <div class="container">
+                    <div class="d-flex justify-content-between">
+                        <h1>Projetos</h1>
+                        <button class="btn btn-success h-50 mt-3"><a href="../crud/c_projetoform.php" class="text-decoration-none text-light">Cadastrar</a></button>
+                    </div>
                     <?php
                         if(count($projetos) > 0){
                     ?>
                 <div class="d-flex justify-content-between">
-                    <h1>Projetos</h1>
-                    <button class="btn btn-success h-50 mt-3"><a href="../crud/cadastrar_projeto.php" class="text-decoration-none text-light">Cadastrar</a></button>
                 </div>
                 <div class="table-tarefas">
                 <table class="table table-hover">
@@ -50,7 +52,6 @@
                 <?php
                     } else {
                 ?>
-                <h1>Projeto</h1>
                 <div class="table-tarefas">
                 <table class="table table-hover">
                     <thead>
@@ -66,13 +67,13 @@
                         </tr>
                     </thead>
                     <?php
-                        echo "<h2>Não há tarefas cadastradas.</h2>";
+                        echo "<h2>Não há projetos cadastrados.</h2>";
                         }
                     ?>
             </div>
         </div>
     </div>
-                </div>
+</div>
                 
 <?php
     require '../templates/footer.php';
