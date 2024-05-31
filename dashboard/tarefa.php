@@ -1,24 +1,38 @@
 <?php
     require '../database/db_config.php';
 
-    $sql = "SELECT 
-	        tarefas.idtarefa, 
-            tarefas.data_inicio,
-            tarefas.data_entrega,
-            tarefas.status,
-            tarefas.prioridade,
-            tarefas.nome,
-            projetos.idprojetos,
-            projetos.nomeprojeto
-        FROM tarefas
-        INNER JOIN projetos
-	        ON tarefas.projetos_idprojetos = projetos.idprojetos;";
+    $sql = 'select t.idtarefa, t.nome, t.data_inicio, t.data_entrega, t.status, t.prioridade, p.idprojetos, p.nomeprojeto as projetos
+    from tarefas as t
+    join projetos as p on t.projetos_idprojetos = p.idprojetos
+    group by p.idprojetos;';
     $result = $conn->prepare($sql);
     $result -> execute();
     $tarefas = $result-> fetchAll(PDO::FETCH_ASSOC);
     
     require '../templates/header.php';
     require '../templates/navbar.php';
+?>
+
+<?php
+if(isset($_GET['delete'])){
+    $nomeTarefa = $_GET['tarefa'];
+?>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong><?php echo $nomeTarefa?> deletado(a) com sucesso!</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<?php
+}
+
+if(isset($_GET['insert'])){
+    $nomeTarefa = $_GET['nome'];
+?> 
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong><?php echo $nomeTarefa?> cadastrado(a) com sucesso!</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<?php
+}
 ?>
 
    <div class="container">
@@ -55,13 +69,21 @@
                                 echo "<td>" . $tarefa['data_entrega'] . "</td>";
                                 echo "<td>" . $tarefa['status'] . "</td>";
                                 echo "<td>" . $tarefa['prioridade'] . "</td>";
-                                echo "<td>" . $tarefa['projetos.idprojetos'] . "</td>";
-                                echo "<td><button type='button' class='btn btn-warning'>Editar</button>
-                                      <button type='button' class='btn btn-danger'>Apagar</button></td>";
+                                echo "<td>" . $tarefa['projetos'] . "</td>";
+                                echo "<td>
+                                <form action='../crud/d_tarefa.php' method='POST'>
+                                <input type='hidden' name='id' value='" . $tarefa['idtarefa'] . "'/>
+                                <input type='hidden' name='nome' value='" . $tarefa['nome'] . "'/>
+                                <button type='submit' class='btn btn-danger'>Apagar</button></td>";
+                                
+                                echo "<td><button type='button' class='btn btn-warning'>Editar</button>";
                                 echo "</tr>";
                             }
                         ?>
                     </tbody>
+                    <form action="../crud/d_tarefa.php" method="POST">
+                        <input type="hidden" value=>
+                    </form>
                 </table>
                 <?php
                     } else {

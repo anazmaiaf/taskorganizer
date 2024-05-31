@@ -1,7 +1,7 @@
 <?php
 require '../database/db_config.php';
 
-if(isset($_POST['nome']) && !empty($_POST['nome']) && isset($_POST['inicio']) && isset($_POST['entrega']) && isset($_POST['status']) && isset($_POST['prioridade'])) {
+if(isset($_POST['nome']) && isset($_POST['inicio']) && isset($_POST['entrega']) && isset($_POST['status']) && isset($_POST['prioridade'])) {
     $nome = $_POST['nome'];
     $inicio = $_POST['inicio'];
     $entrega = $_POST['entrega'];
@@ -17,6 +17,5 @@ if(isset($_POST['nome']) && !empty($_POST['nome']) && isset($_POST['inicio']) &&
     $result->bindValue(':prioridade', $prioridade);
     $result->execute();   
 
-    header("Location: ../dashboard/tarefa.php?nome=$nome&inicio=$inicio&entrega=$entrega&status=$status&prioridade=$prioridade");
+    header("Location: ../dashboard/tarefa.php?nome=$nome&insert=cadastrado");
 }
-?>

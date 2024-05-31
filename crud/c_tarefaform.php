@@ -1,7 +1,17 @@
 <?php
     require '../templates/header.php';
     require '../templates/navbar.php';
+
+    
+    $sql = 'select t.idtarefa, t.nome, t.data_inicio, t.data_entrega, t.status, t.prioridade, p.idprojetos, p.nomeprojeto as projetos
+    from tarefas as t
+    join projetos as p on t.projetos_idprojetos = p.idprojetos
+    group by p.idprojetos;';
+    $result = $conn->prepare($sql);
+    $result -> execute();
+    $tarefas = $result-> fetchAll(PDO::FETCH_ASSOC);
 ?>
+
 <h1 class="text-center">Cadastrar tarefa</h1>
 <section>
     <div class="container">
@@ -19,13 +29,9 @@
                             <div class="form-outline">
                                 <select name="projeto" class="form-select">
                                     <?php 
-                                        $sql = "SELECT * FROM projetos";
-                                        $result = $conn -> query($sql);
-                                        if ($result->num_rows > 0) {
-                                            while ($row = $result->fetch_object()) {
-                                                echo "<option value='" . $row->idprojetos . "'>" . $row->nomeprojeto . "</option>";
-                                            }
-                                        }        
+                                        foreach($tarefa as $tarefas){
+                                            echo "<option value='" . $tarefa['p.idprojetos'] . "'>" . $tarefa['p.nomeprojeto'] . "</option>";
+                                        }   
                                     ?>
                                 </select>
                                 <label class="form-label" for="projeto">Projeto Relacionado</label>
