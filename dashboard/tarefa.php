@@ -1,9 +1,18 @@
 <?php
     require '../database/db_config.php';
 
-    $sql = "SELECT t.*, p.nome AS projetos_nome 
-            FROM tarefas t 
-            JOIN projetos p ON t.projetos_idprojetos = p.idprojetos";
+    $sql = "SELECT 
+	        tarefas.idtarefa, 
+            tarefas.data_inicio,
+            tarefas.data_entrega,
+            tarefas.status,
+            tarefas.prioridade,
+            tarefas.nome,
+            projetos.idprojetos,
+            projetos.nomeprojeto
+        FROM tarefas
+        INNER JOIN projetos
+	        ON tarefas.projetos_idprojetos = projetos.idprojetos;";
     $result = $conn->prepare($sql);
     $result -> execute();
     $tarefas = $result-> fetchAll(PDO::FETCH_ASSOC);
@@ -46,7 +55,7 @@
                                 echo "<td>" . $tarefa['data_entrega'] . "</td>";
                                 echo "<td>" . $tarefa['status'] . "</td>";
                                 echo "<td>" . $tarefa['prioridade'] . "</td>";
-                                echo "<td>" . $tarefa['projetos_nome'] . "</td>";
+                                echo "<td>" . $tarefa['projetos.idprojetos'] . "</td>";
                                 echo "<td><button type='button' class='btn btn-warning'>Editar</button>
                                       <button type='button' class='btn btn-danger'>Apagar</button></td>";
                                 echo "</tr>";
@@ -56,25 +65,9 @@
                 </table>
                 <?php
                     } else {
-                ?>
-                <div class="table-tarefas">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Data de início</th>
-                        <th scope="col">Data de entrega</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Prioridade</th>
-                        <th scope="col">Projeto relacionado</th>
-                        <th scope="col">Ações</th>
-                        </tr>
-                    </thead>
-                    <?php
                         echo "<h2>Não há tarefas cadastradas.</h2>";
-                        }
-                    ?>
+                    }
+                ?>
                 </div>
             </div>
         </div>

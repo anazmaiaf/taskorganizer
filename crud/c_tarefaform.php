@@ -17,11 +17,15 @@
                         </div>
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
-                                <select name="projeto" class="form-select" aria-label="Default select example">
+                                <select name="projeto" class="form-select">
                                     <?php 
-                                        foreach ($projetos as $projeto) {
-                                            echo "<option value='" . $projeto['idprojetos'] . "'>" . $projeto['nome'] . "</option>";
-                                        }
+                                        $sql = "SELECT * FROM projetos";
+                                        $result = $conn -> query($sql);
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_object()) {
+                                                echo "<option value='" . $row->idprojetos . "'>" . $row->nomeprojeto . "</option>";
+                                            }
+                                        }        
                                     ?>
                                 </select>
                                 <label class="form-label" for="projeto">Projeto Relacionado</label>

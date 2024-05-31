@@ -8,7 +8,7 @@ if(isset($_POST['nome']) && !empty($_POST['nome']) && isset($_POST['inicio']) &&
     $status = $_POST['status'];
     $prioridade = $_POST['prioridade'];
 
-    $sql = 'INSERT INTO tarefas(nome, data_inicio, data_entrega, status, prioridade, projetos_idprojetos) VALUES(:nome, :data_inicio, :data_entrega, :status, :prioridade, 1)';
+    $sql = 'INSERT INTO tarefas(nome, data_inicio, data_entrega, status, prioridade, projetos_idprojetos) VALUES(:nome, :data_inicio, :data_entrega, :status, :prioridade, 3)';
     $result = $conn->prepare($sql);
     $result->bindValue(':nome', $nome);
     $result->bindValue(':data_inicio', $inicio);

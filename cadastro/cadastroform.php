@@ -28,16 +28,17 @@
                     <label class="form-label text-white" for="username">Usuário</label>
                     <input name="username" class="form-control" placeholder="Nome de usuário" required/>
                   </div>
+                  
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <label class="form-label text-white" for="email">E-mail</label>
+                    <input type="email" name="email" class="form-control" placeholder="E-mail" required/>
+                  </div>
 
                   <div data-mdb-input-init class="form-outline mb-4">
                     <label class="form-label text-white" for="password">Senha</label>
                     <input type="password" name="password" class="form-control" placeholder="Senha" required/>
                   </div>
 
-                  <div data-mdb-input-init class="form-outline mb-4">
-                    <label class="form-label text-white" for="email">E-mail</label>
-                    <input type="email" name="email" class="form-control" placeholder="E-mail" required/>
-                  </div>
 
                   <div class="text-center pt-1 mb-5 pb-1">
                     <button data-mdb-button-init data-mdb-ripple-init class="btn btn-block fa-lg gradient-custom-2 mb-3" type="submit" name="submit">Criar Conta
