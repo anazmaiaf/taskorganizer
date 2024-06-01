@@ -37,7 +37,7 @@
                             foreach($projetos as $projeto){
                                 echo "<tr>";
                                 echo "<th scope='row'>" . $projeto['idprojetos'] . "</th>";
-                                echo "<td>" . $projeto['nome'] . "</td>";
+                                echo "<td>" . $projeto['nomeprojeto'] . "</td>";
                                 echo "<td>" . $projeto['data_inicio'] . "</td>";
                                 echo "<td>" . $projeto['data_entrega'] . "</td>";
                                 echo "<td>" . $projeto['status'] . "</td>";
@@ -50,25 +50,9 @@
                     </tbody>
                 </table>
                 <?php
-                    } else {
-                ?>
-                <div class="table-tarefas">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Data de início</th>
-                        <th scope="col">Data de entrega</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Prioridade</th>
-                        <th scope="col">Projeto relacionado</th>
-                        <th scope="col">Ações</th>
-                        </tr>
-                    </thead>
-                    <?php
+                    } else{
                         echo "<h2>Não há projetos cadastrados.</h2>";
-                        }
+                    }
                     ?>
             </div>
         </div>

@@ -3,36 +3,14 @@
 
     $sql = 'select t.idtarefa, t.nome, t.data_inicio, t.data_entrega, t.status, t.prioridade, p.idprojetos, p.nomeprojeto as projetos
     from tarefas as t
-    join projetos as p on t.projetos_idprojetos = p.idprojetos
-    group by p.idprojetos;';
+    join projetos as p on t.projetos_idprojetos = p.idprojetos;';
     $result = $conn->prepare($sql);
     $result -> execute();
     $tarefas = $result-> fetchAll(PDO::FETCH_ASSOC);
+
     
     require '../templates/header.php';
     require '../templates/navbar.php';
-?>
-
-<?php
-if(isset($_GET['delete'])){
-    $nomeTarefa = $_GET['tarefa'];
-?>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong><?php echo $nomeTarefa?> deletado(a) com sucesso!</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-<?php
-}
-
-if(isset($_GET['insert'])){
-    $nomeTarefa = $_GET['nome'];
-?> 
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong><?php echo $nomeTarefa?> cadastrado(a) com sucesso!</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-<?php
-}
 ?>
 
    <div class="container">
@@ -81,9 +59,6 @@ if(isset($_GET['insert'])){
                             }
                         ?>
                     </tbody>
-                    <form action="../crud/d_tarefa.php" method="POST">
-                        <input type="hidden" value=>
-                    </form>
                 </table>
                 <?php
                     } else {
