@@ -20,6 +20,16 @@ if(isset($_GET['delete'])){
 </div>
 <?php
 }
+
+if(isset($_GET['insert'])){
+    $tarefa = $_GET['nome'];
+?>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong><?php echo $tarefa?> cadastrado(a) com sucesso!</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<?php
+}
 ?>
 
 <div class="container">

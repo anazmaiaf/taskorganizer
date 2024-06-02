@@ -8,9 +8,7 @@ if(isset($_POST['projeto']) && isset($_POST['inicio']) && isset($_POST['entrega'
     $status = $_POST['status'];
     $andamento = $_POST['andamento'];
 
-    $sql = 'INSERT INTO projetos(nomeprojeto,data_inicio,data_entrega,status,andamento)
-            VALUES(:projeto,:data_inicio,:data_entrega,:status,:andamento)';
-    
+    $sql = 'INSERT INTO projetos(nomeprojeto,data_inicio,data_entrega,status,andamento) VALUES(:projeto,:data_inicio,:data_entrega,:status,:andamento)';
     $result = $conn->prepare($sql);
     $result -> bindValue(':projeto',$projeto);
     $result -> bindValue(':data_inicio',$inicio);
