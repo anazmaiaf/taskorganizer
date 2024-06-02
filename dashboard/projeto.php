@@ -55,16 +55,19 @@ if(isset($_GET['delete'])){
                     echo "<td>" . $projeto['status'] . "</td>";
                     echo "<td>" . $projeto['andamento'] . "</td>";
                     echo "<td>
-                            <form action='../crud/d_projeto.php' method='POST'>
+                        <div class='d-flex'>
+                            <form action='../crud/d_projeto.php' method='POST' class='mx-2'>
                                 <input type='hidden' name='id' value='" . $projeto['idprojetos'] . "'>
                                 <input type='hidden' name='nome' value='". $projeto['nomeprojeto'] ."'>
                                 <button type='submit' class='btn btn-danger'>Apagar</button>
                             </form> 
+                            <form action='../crud/u_projetoform.php' method='POST'>
+                                <input type='hidden' name='id' value='" . $projeto['idprojetos'] . "'>
+                                <input type='hidden' name='nome' value='". $projeto['nomeprojeto'] ."'>
+                                <button type='submit' class='btn btn-warning'>Editar</button>
+                            </form>
+                        </div> 
                         </td>";
-                    echo "<td>
-                            <button type='button' class='btn btn-warning'>Editar</button>
-                          </td>";
-                    echo "</tr>";
                 }
                 ?>
             </tbody>

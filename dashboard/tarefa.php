@@ -3,7 +3,7 @@ require '../database/db_config.php';
 
 $sql = 'SELECT t.idtarefa, t.nome, t.data_inicio, t.data_entrega, t.status, t.prioridade, p.idprojetos, p.nomeprojeto AS projetos
         FROM tarefas AS t
-        JOIN projetos AS p ON t.projetos_idprojetos = p.idprojetos;';
+        INNER JOIN projetos AS p ON t.projetos_idprojetos = p.idprojetos;';
 $result = $conn->prepare($sql);
 $result->execute();
 $tarefas = $result->fetchAll(PDO::FETCH_ASSOC);

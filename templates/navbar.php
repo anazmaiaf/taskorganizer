@@ -8,6 +8,7 @@
                     <li><a href="../dashboard/index.php" class="nav-link px-2 link-secondary">Home</a></li>
                     <li><a href="../dashboard/projeto.php" class="nav-link px-2 link-secondary">Projetos</a></li>
                     <li><a href="../dashboard/tarefa.php" class="nav-link px-2 link-secondary">Tarefas</a></li>
+                    <li><a href="../dashboard/relatorio.php" class="nav-link px-2 link-secondary">Relatório</a></li>
                 </ul>
 
                 <div class="dropdown">

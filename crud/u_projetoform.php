@@ -2,12 +2,12 @@
     require '../templates/header.php';
     require '../templates/navbar.php';
 ?>
-<h1 class="text-center">Cadastrar projeto</h1>
+<h1 class="text-center">Atualizar projeto</h1>
 <section>
     <div class="container">
         <div class="card col-lg-8 mx-auto">
             <div class="card-body p-md-5">
-                <form action="c_projeto.php" method="POST">
+                <form action="u_projeto.php" method="POST">
                     <div class="row">
                         <div class="col-md-12 mb-4">
                             <div class="form-outline">
@@ -49,7 +49,7 @@
                 <div class="d-flex justify-content-center">
                     <form action="../dashboard/projeto.php">
                         <input type="submit" value="Cancelar" class="btn btn-danger">
-                        <input type="submit" value="Cadastrar" class="btn btn-success">
+                        <input type="submit" value="Atualizar" class="btn btn-success">
                     </form>
                 </div>
             </div>

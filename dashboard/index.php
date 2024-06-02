@@ -28,7 +28,7 @@ require '../templates/navbar.php';
                     <div class="card-body">
                         <h5 class="card-title">Projetos</h5>
                         <p class="card-text">Associe tarefas aos seus projetos e ponha sua criatividade em jogo.</p>
-                        <button class="btn-custom" type="submit" name="submit"><a href="tarefa.php" class="text-decoration-none text-white">Vá para os Projetos</a></button>
+                        <button class="btn-custom" type="submit" name="submit"><a href="projeto.php" class="text-decoration-none text-white">Vá para os Projetos</a></button>
                     </div>
                     </div>
                 </div>

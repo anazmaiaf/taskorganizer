@@ -7,14 +7,16 @@ if(isset($_POST['nome']) && isset($_POST['inicio']) && isset($_POST['entrega']) 
     $entrega = $_POST['entrega'];
     $status = $_POST['status'];
     $prioridade = $_POST['prioridade'];
+    $projetorelacionado = $_POST['projeto'];
 
-    $sql = 'INSERT INTO tarefas(nome, data_inicio, data_entrega, status, prioridade, projetos_idprojetos) VALUES(:nome, :data_inicio, :data_entrega, :status, :prioridade, 3)';
+    $sql = 'INSERT INTO tarefas(nome, data_inicio, data_entrega, status, prioridade, projetos_idprojetos) VALUES(:nome, :data_inicio, :data_entrega, :status, :prioridade, :projetos_idprojetos)';
     $result = $conn->prepare($sql);
     $result->bindValue(':nome', $nome);
     $result->bindValue(':data_inicio', $inicio);
     $result->bindValue(':data_entrega', $entrega);
     $result->bindValue(':status', $status);
     $result->bindValue(':prioridade', $prioridade);
+    $result->bindValue(':projetos_idprojetos', $projetorelacionado);
     $result->execute();   
 
     header("Location: ../dashboard/tarefa.php?nome=$nome&insert=cadastrado");
