@@ -68,13 +68,36 @@ if(isset($_GET['insert'])){
                         echo "<td>" . $tarefa['status'] . "</td>";
                         echo "<td>" . $tarefa['prioridade'] . "</td>";
                         echo "<td>" . $tarefa['projetos'] . "</td>";
-                        echo "<td>
-                                <form action='../crud/d_tarefa.php' method='POST' style='display: inline;'>
+                        echo "<td>                       
+                        <button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#staticBackdrop'>Apagar</button>
+                        
+                        <div class='modal fade' id='staticBackdrop' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
+                        <div class='modal-dialog'>
+                            <div class='modal-content'>
+                            <div class='modal-header'>
+                                <h1 class='modal-title fs-5' id='staticBackdropLabel'>Você tem certeza?</h1>
+                                <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                            </div>
+                            <div class='modal-body'>
+                                Você deseja apagar essa tarefa permanentemente? 
+                            </div>
+                            <div class='modal-footer'>
+                                <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Não</button>
+                                <form action='../crud/d_projeto.php' method='POST' class='mx-2'>
+                                    <input type='hidden' name='id' value='" . $tarefa['idtarefa'] . "'>
+                                    <input type='hidden' name='nome' value='". $tarefa['nome'] ."'>
+                                    <button type='submit' class='btn btn-danger'>Apagar</button>
+                                </form> 
+                                <button type='button' class='btn btn-danger'>Apagar</button>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                                <form action='../crud/u_tarefaform.php' method='POST' style='display: inline;'>
                                     <input type='hidden' name='id' value='" . $tarefa['idtarefa'] . "'/>
                                     <input type='hidden' name='nome' value='" . $tarefa['nome'] . "'/>
-                                    <button type='submit' class='btn btn-danger'>Apagar</button>
+                                    <button type='submit' class='btn btn-warning'>Editar</button>
                                 </form>
-                                <button type='button' class='btn btn-warning'>Editar</button>
                               </td>";
                         echo "</tr>";
                     }
