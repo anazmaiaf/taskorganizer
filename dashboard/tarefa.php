@@ -13,11 +13,9 @@ require '../templates/navbar.php';
 
 // Alert de deletado
 if(isset($_GET['tarefa'])){
-    $tarefa = $_GET['tarefa'];
-    var_dump($_GET['tarefa']);
 ?>
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <strong>A tarefa <?php echo $tarefa?> foi deletado(a) com sucesso!</strong>
+    <strong>A tarefa foi deletada com sucesso!</strong>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 <?php

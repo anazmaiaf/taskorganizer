@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_POST['user']) && isset($_POST['password'])){
+if(isset($_POST['user']) && isset($_POST['password']) && !empty($_POST['user']) && !empty($_POST['password'])){
     session_start();
     require("../database/db_config.php");
     $user = $_POST['user'];

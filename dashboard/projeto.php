@@ -10,11 +10,10 @@ require '../templates/header.php';
 require '../templates/navbar.php';   
 
 // Alert projeto deletado
-if(isset($_GET['delete'])){
-    $projeto = $_GET['projeto'];
+if(isset($_GET['projeto'])){
 ?>
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <strong><?php echo $projeto?> deletado(a) com sucesso!</strong>
+    <strong>O projeto foi deletado com sucesso!</strong>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 <?php
@@ -76,7 +75,7 @@ if(isset($_GET['insert'])){
                                 <button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#modaldeletar'>
                                     Apagar
                                 </button>
-                            </form> 
+                            </form>  
                             <form action='../crud/u_projetoform.php' method='POST'>
                                 <input type='hidden' name='id' value='" . $projeto['idprojetos'] . "'>
                                 <input type='hidden' name='nome' value='". $projeto['nomeprojeto'] ."'>
@@ -106,11 +105,15 @@ if(isset($_GET['insert'])){
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Essa ação é irreversível e irá apagar todas as tarefas relacionadas! Deseja continuar?
+        Essa ação é irreversível! Deseja continuar?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-danger">Apagar</button>
+        <form action='../crud/d_projeto.php' method='post'>
+            <input type='hidden' name='id' value='<?php $projeto['idprojetos'] ?>'>
+            <input type='hidden' name='nome' value='<?php $projeto['nomeprojeto'] ?>'>
+            <button type='submit' class='btn btn-danger'>Apagar</button>
+        </form>
       </div>
     </div>
   </div>

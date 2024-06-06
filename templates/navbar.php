@@ -5,7 +5,7 @@
                     <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
                     <i class="fa-solid fa-bars"></i>
                     </button>
-                    <li><a href="../dashboard/index.php" class="nav-link px-2 link-secondary">Home</a></li>
+                    <li><a href="../dashboard/index.php" class="nav-link px-2 link-secondary">Início</a></li>
                     <li><a href="../dashboard/projeto.php" class="nav-link px-2 link-secondary">Projetos</a></li>
                     <li><a href="../dashboard/tarefa.php" class="nav-link px-2 link-secondary">Tarefas</a></li>
                     <li><a href="../dashboard/relatorio.php" class="nav-link px-2 link-secondary">Relatório</a></li>
@@ -31,10 +31,16 @@
   <div class="offcanvas-body">
     <div>
         <div class="mt-3">
+            <a href="index.php" class="text-decoration-none text-light fs-5">Início</a>
+        </div>
+        <div class="mt-3">
             <a href="projeto.php" class="text-decoration-none text-light fs-5">Projetos</a>
         </div>
         <div class="mt-3">
             <a href="tarefa.php" class="text-decoration-none text-light fs-5">Tarefas</a>
+        </div>
+        <div class="mt-3">
+            <a href="relatorio.php" class="text-decoration-none text-light fs-5">Relatório</a>
         </div>
     </div>
   </div>
