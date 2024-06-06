@@ -11,16 +11,19 @@ $tarefas = $result->fetchAll(PDO::FETCH_ASSOC);
 require '../templates/header.php';
 require '../templates/navbar.php';
 
-if(isset($_GET['delete'])){
+// Alert de deletado
+if(isset($_GET['tarefa'])){
     $tarefa = $_GET['tarefa'];
+    var_dump($_GET['tarefa']);
 ?>
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <strong><?php echo $tarefa?> deletado(a) com sucesso!</strong>
+    <strong>A tarefa <?php echo $tarefa?> foi deletado(a) com sucesso!</strong>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 <?php
 }
 
+// Alert de cadastrado
 if(isset($_GET['insert'])){
     $tarefa = $_GET['nome'];
 ?>
@@ -68,38 +71,23 @@ if(isset($_GET['insert'])){
                         echo "<td>" . $tarefa['status'] . "</td>";
                         echo "<td>" . $tarefa['prioridade'] . "</td>";
                         echo "<td>" . $tarefa['projetos'] . "</td>";
-                        echo "<td>                       
-                        <button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#staticBackdrop'>Apagar</button>
-                        
-                        <div class='modal fade' id='staticBackdrop' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
-                        <div class='modal-dialog'>
-                            <div class='modal-content'>
-                            <div class='modal-header'>
-                                <h1 class='modal-title fs-5' id='staticBackdropLabel'>Você tem certeza?</h1>
-                                <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
-                            </div>
-                            <div class='modal-body'>
-                                Você deseja apagar essa tarefa permanentemente? 
-                            </div>
-                            <div class='modal-footer'>
-                                <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Não</button>
-                                <form action='../crud/d_projeto.php' method='POST' class='mx-2'>
-                                    <input type='hidden' name='id' value='" . $tarefa['idtarefa'] . "'>
-                                    <input type='hidden' name='nome' value='". $tarefa['nome'] ."'>
-                                    <button type='submit' class='btn btn-danger'>Apagar</button>
-                                </form> 
-                                <button type='button' class='btn btn-danger'>Apagar</button>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                                <form action='../crud/u_tarefaform.php' method='POST' style='display: inline;'>
-                                    <input type='hidden' name='id' value='" . $tarefa['idtarefa'] . "'/>
-                                    <input type='hidden' name='nome' value='" . $tarefa['nome'] . "'/>
-                                    <button type='submit' class='btn btn-warning'>Editar</button>
-                                </form>
-                              </td>";
-                        echo "</tr>";
+                        echo "<td>
+                        <div class='d-flex'>
+                            <form action='../crud/d_projeto.php' method='POST' class='mx-2'>
+                                <input type='hidden' name='id' value='" . $tarefa['idtarefa'] . "'>
+                                <input type='hidden' name='nome' value='". $tarefa['nome'] ."'>
+                                <button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#modaldeletar'>
+                                    Apagar
+                                </button>
+                            </form> 
+                            <form action='../crud/u_projetoform.php' method='POST'>
+                                <input type='hidden' name='id' value='" . $tarefa['idtarefa'] . "'>
+                                <input type='hidden' name='nome' value='". $tarefa['nome'] ."'>
+                                <button type='submit' class='btn btn-warning'>Editar</button>
+                            </form>
+                        </div> 
+                        </td>";
+                    echo "</tr>";
                     }
                     ?>
                 </tbody>
@@ -110,6 +98,29 @@ if(isset($_GET['insert'])){
         echo "<h2>Não há tarefas cadastradas.</h2>";
     }
     ?>
+</div>
+
+<!-- Modal deletar -->
+<div class="modal fade" id="modaldeletar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Deseja apagar essa tarefa?</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Essa ação é irreversível! Deseja continuar?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <form action='../crud/d_tarefa.php' method='post'>
+            <input type='hidden' name='id' value='<?php $tarefa['idtarefa'] ?>'>
+            <input type='hidden' name='nome' value='<?php $tarefa['nome'] ?>'>
+            <button type='submit' class='btn btn-danger'>Apagar</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
 
 <?php

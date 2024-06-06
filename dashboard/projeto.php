@@ -9,11 +9,25 @@ $projetos = $result->fetchAll(PDO::FETCH_ASSOC);
 require '../templates/header.php';
 require '../templates/navbar.php';   
 
+// Alert projeto deletado
 if(isset($_GET['delete'])){
     $projeto = $_GET['projeto'];
 ?>
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
     <strong><?php echo $projeto?> deletado(a) com sucesso!</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<?php
+}
+?>
+
+<!-- Alert projeto cadastrado -->
+<?php
+if(isset($_GET['insert'])){
+    $projeto = $_GET['projeto'];
+?>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong><?php echo $projeto?> cadastrado(a) com sucesso!</strong>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 <?php
@@ -59,7 +73,9 @@ if(isset($_GET['delete'])){
                             <form action='../crud/d_projeto.php' method='POST' class='mx-2'>
                                 <input type='hidden' name='id' value='" . $projeto['idprojetos'] . "'>
                                 <input type='hidden' name='nome' value='". $projeto['nomeprojeto'] ."'>
-                                <button type='submit' class='btn btn-danger'>Apagar</button>
+                                <button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#modaldeletar'>
+                                    Apagar
+                                </button>
                             </form> 
                             <form action='../crud/u_projetoform.php' method='POST'>
                                 <input type='hidden' name='id' value='" . $projeto['idprojetos'] . "'>
@@ -68,6 +84,7 @@ if(isset($_GET['delete'])){
                             </form>
                         </div> 
                         </td>";
+                    echo "</tr>";
                 }
                 ?>
             </tbody>
@@ -80,6 +97,24 @@ if(isset($_GET['delete'])){
     </div>
 </div>
 
+<!-- Modal deletar -->
+<div class="modal fade" id="modaldeletar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Deseja apagar esse projeto?</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Essa ação é irreversível e irá apagar todas as tarefas relacionadas! Deseja continuar?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-danger">Apagar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <?php
 require '../templates/footer.php';
-?>
