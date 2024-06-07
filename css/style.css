@@ -28,6 +28,9 @@
   }
 }
 
-.button-custom{
-  background-color: red;
+.btn-custom{
+  background: linear-gradient(to right, #008F8C, #015958, #023535);
+  border:none;
+  border-radius:5px;
+  padding: 7px;
 }

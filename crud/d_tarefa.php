@@ -1,8 +1,8 @@
 <?php
 require '../database/db_config.php';
 
-if (isset($_POST['id']) && isset($_POST['nome'])) {
-    $id = $_POST['id'];
+if (isset($_POST['idtarefa']) && !empty($_POST['idtarefa'])) {
+    $id = $_POST['idtarefa'];
 
     $sql = "DELETE FROM tarefas WHERE idtarefa = :id";
     $result = $conn->prepare($sql);

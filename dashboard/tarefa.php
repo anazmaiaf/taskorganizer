@@ -71,14 +71,10 @@ if(isset($_GET['insert'])){
                         echo "<td>" . $tarefa['projetos'] . "</td>";
                         echo "<td>
                         <div class='d-flex'>
-                            <form action='../crud/d_projeto.php' method='POST' class='mx-2'>
-                                <input type='hidden' name='id' value='" . $tarefa['idtarefa'] . "'>
-                                <input type='hidden' name='nome' value='". $tarefa['nome'] ."'>
-                                <button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#modaldeletar'>
-                                    Apagar
-                                </button>
-                            </form> 
-                            <form action='../crud/u_projetoform.php' method='POST'>
+                            <button type='button' class='btn btn-danger mx-2' data-idprojeto='" . $idprojeto . "' data-nomeprojeto='" . $nomeprojeto . "' data-bs-toggle='modal' data-bs-target='#modaldeletar'>
+                                Apagar
+                            </button>
+                            <form action='../crud/u_tarefaform.php' method='POST'>
                                 <input type='hidden' name='id' value='" . $tarefa['idtarefa'] . "'>
                                 <input type='hidden' name='nome' value='". $tarefa['nome'] ."'>
                                 <button type='submit' class='btn btn-warning'>Editar</button>
@@ -112,14 +108,31 @@ if(isset($_GET['insert'])){
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
         <form action='../crud/d_tarefa.php' method='post'>
-            <input type='hidden' name='id' value='<?php $tarefa['idtarefa'] ?>'>
-            <input type='hidden' name='nome' value='<?php $tarefa['nome'] ?>'>
+            <input type='hidden' id="modal-idtarefa" name='idtarefa' value='<?php $tarefa['idtarefa'] ?>'>
+            <input type='hidden' id="modal-nometarefa" name='nometarefa' value='<?php $tarefa['nome'] ?>'>
             <button type='submit' class='btn btn-danger'>Apagar</button>
         </form>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var modal = document.getElementById('modaldeletar');
+    modal.addEventListener('show.bs.modal', function(event) {
+        var button = event.relatedTarget;
+        var idtarefa = button.getAttribute('data-idtarefa');
+        var nometarefa = button.getAttribute('data-nometarefa');
+
+        var modalIdInput = document.getElementById('modal-idtarefa');
+        var modalNomeInput = document.getElementById('modal-nometarefa');
+
+        modalIdInput.value = idtarefa;
+        modalNomeInput.value = nometarefa;
+    });
+});
+</script>
 
 <?php
 require '../templates/footer.php';

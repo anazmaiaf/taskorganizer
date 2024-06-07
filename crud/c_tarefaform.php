@@ -73,8 +73,8 @@
                     </div>
 
                     <div class="d-flex justify-content-center">
-                        <input type="submit" value="Cadastrar" class="btn btn-success me-2">
-                        <a href="../dashboard/tarefa.php" class="btn btn-danger">Cancelar</a>
+                        <a href="../dashboard/tarefa.php" class="btn btn-danger mx-1">Cancelar</a>
+                        <input type="submit" value="Cadastrar" class="btn btn-success">
                     </div>
                 </form>
             </div>

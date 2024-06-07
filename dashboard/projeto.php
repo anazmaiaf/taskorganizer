@@ -69,13 +69,9 @@ if(isset($_GET['insert'])){
                     echo "<td>" . $projeto['andamento'] . "</td>";
                     echo "<td>
                         <div class='d-flex'>
-                            <form action='../crud/d_projeto.php' method='POST' class='mx-2'>
-                                <input type='hidden' name='id' value='" . $projeto['idprojetos'] . "'>
-                                <input type='hidden' name='nome' value='". $projeto['nomeprojeto'] ."'>
-                                <button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#modaldeletar'>
-                                    Apagar
-                                </button>
-                            </form>  
+                            <button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#modaldeletar'>
+                                Apagar
+                            </button> 
                             <form action='../crud/u_projetoform.php' method='POST'>
                                 <input type='hidden' name='id' value='" . $projeto['idprojetos'] . "'>
                                 <input type='hidden' name='nome' value='". $projeto['nomeprojeto'] ."'>
@@ -96,7 +92,6 @@ if(isset($_GET['insert'])){
     </div>
 </div>
 
-<!-- Modal deletar -->
 <div class="modal fade" id="modaldeletar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -109,15 +104,32 @@ if(isset($_GET['insert'])){
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        <form action='../crud/d_projeto.php' method='post'>
-            <input type='hidden' name='id' value='<?php $projeto['idprojetos'] ?>'>
-            <input type='hidden' name='nome' value='<?php $projeto['nomeprojeto'] ?>'>
-            <button type='submit' class='btn btn-danger'>Apagar</button>
+        <form action="../crud/d_projeto.php" method="post">
+            <input type="hidden" id="modal-idprojeto" name="idprojeto">
+            <input type="hidden" id="modal-nomeprojeto" name="nomeprojeto">
+            <button type="submit" class="btn btn-danger">Apagar</button>
         </form>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var modal = document.getElementById('modaldeletar');
+    modal.addEventListener('show.bs.modal', function(event) {
+        var button = event.relatedTarget;
+        var idprojeto = button.getAttribute('data-idprojeto');
+        var nomeprojeto = button.getAttribute('data-nomeprojeto');
+
+        var modalIdInput = document.getElementById('modal-idprojeto');
+        var modalNomeInput = document.getElementById('modal-nomeprojeto');
+
+        modalIdInput.value = idprojeto;
+        modalNomeInput.value = nomeprojeto;
+    });
+});
+</script>
 
 <?php
 require '../templates/footer.php';

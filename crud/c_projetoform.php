@@ -47,8 +47,8 @@
                         </div>
                     </div>
                 <div class="d-flex justify-content-center">
+                    <input type="submit" value="Cancelar" class="btn btn-danger mx-1">
                     <input type="submit" value="Cadastrar" class="btn btn-success">
-                    <input type="submit" value="Cancelar" class="btn btn-danger">
                 </div>
                 </form>
             </div>

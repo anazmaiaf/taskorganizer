@@ -11,7 +11,7 @@ require '../templates/navbar.php';
     }
 </style>
     <div class="col py-3">
-        <h1 class="mx-5 mt-5 text-center">Seja bem vindo <?php echo $_SESSION['username']?>!</h1>
+        <h1 class="mx-5 mt-5 text-center">Seja bem vindo(a) <?php echo $_SESSION['username']?>!</h1>
         <div class="cards-align d-flex justify-content-center align-items-center">
             <div class="row mt-5">
                 <div class="col-sm-6">
