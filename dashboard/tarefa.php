@@ -61,6 +61,8 @@ if(isset($_GET['insert'])){
                 <tbody>
                     <?php
                     foreach ($tarefas as $tarefa) {
+                        $idtarefa = $tarefa['idtarefa'];
+                        $nometarefa = $tarefa['nome'];
                         echo "<tr>";
                         echo "<th scope='row'>" . $tarefa['idtarefa'] . "</th>";
                         echo "<td>" . $tarefa['nome'] . "</td>";
@@ -71,12 +73,12 @@ if(isset($_GET['insert'])){
                         echo "<td>" . $tarefa['projetos'] . "</td>";
                         echo "<td>
                         <div class='d-flex'>
-                            <button type='button' class='btn btn-danger mx-2' data-idprojeto='" . $idprojeto . "' data-nomeprojeto='" . $nomeprojeto . "' data-bs-toggle='modal' data-bs-target='#modaldeletar'>
+                            <button type='button' class='btn btn-danger mx-2' data-idtarefa='" . $idtarefa . "' data-nometarefa='" . $nometarefa . "' data-bs-toggle='modal' data-bs-target='#modaldeletar'>
                                 Apagar
                             </button>
                             <form action='../crud/u_tarefaform.php' method='POST'>
-                                <input type='hidden' name='id' value='" . $tarefa['idtarefa'] . "'>
-                                <input type='hidden' name='nome' value='". $tarefa['nome'] ."'>
+                                <input type='hidden' name='id' value='" . $idtarefa . "'>
+                                <input type='hidden' name='nome' value='". $nometarefa ."'>
                                 <button type='submit' class='btn btn-warning'>Editar</button>
                             </form>
                         </div> 
@@ -136,4 +138,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <?php
 require '../templates/footer.php';
-?>

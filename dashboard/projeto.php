@@ -60,6 +60,8 @@ if(isset($_GET['insert'])){
             <tbody>
                 <?php
                 foreach ($projetos as $projeto) {
+                    $idprojeto = $projeto['idprojetos'];
+                    $nomeprojeto = $projeto['nomeprojeto'];
                     echo "<tr>";
                     echo "<th scope='row'>" . $projeto['idprojetos'] . "</th>";
                     echo "<td>" . $projeto['nomeprojeto'] . "</td>";
@@ -69,12 +71,12 @@ if(isset($_GET['insert'])){
                     echo "<td>" . $projeto['andamento'] . "</td>";
                     echo "<td>
                         <div class='d-flex'>
-                            <button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#modaldeletar'>
+                            <button type='button' class='btn btn-danger mx-2' data-idprojeto='" . $idprojeto . "' data-nomeprojeto='" . $nomeprojeto . "' data-bs-toggle='modal' data-bs-target='#modaldeletar'>
                                 Apagar
-                            </button> 
-                            <form action='../crud/u_projetoform.php' method='POST'>
-                                <input type='hidden' name='id' value='" . $projeto['idprojetos'] . "'>
-                                <input type='hidden' name='nome' value='". $projeto['nomeprojeto'] ."'>
+                            </button>
+                            <form action='../crud/u_tarefaform.php' method='POST'>
+                                <input type='hidden' name='id' value='" . $idprojeto . "'>
+                                <input type='hidden' name='nome' value='". $nomeprojeto ."'>
                                 <button type='submit' class='btn btn-warning'>Editar</button>
                             </form>
                         </div> 
