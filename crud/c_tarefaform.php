@@ -1,6 +1,16 @@
 <?php
     require '../templates/header.php';
     require '../templates/navbar.php';
+
+// Alert de campos inválidos
+if(isset($_GET['invalid'])){
+?>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Campos inválidos. Preencha todos corretamente.</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<?php
+}
 ?>
 
 <h1 class="text-center">Cadastrar tarefa</h1>
@@ -14,7 +24,7 @@
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
                                 <label class="form-label" for="nome">Nome da Tarefa</label>
-                                <input name="nome" class="form-control" placeholder="Tarefa" required/>
+                                <input name="nome" class="form-control" placeholder="Tarefa"/>
                             </div>
                         </div>
 
@@ -41,7 +51,7 @@
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
                                 <label class="form-label" for="inicio">Data de Início</label>
-                                <input name="inicio" class="form-control" type="date" placeholder="Início" required/>
+                                <input name="inicio" class="form-control" type="date" placeholder="Início"/>
                             </div>
                             <div class="form-outline mt-4">
                                 <label class="form-label" for="status">Status</label>
@@ -58,7 +68,7 @@
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
                                 <label class="form-label" for="entrega">Data de Entrega</label>
-                                <input name="entrega" class="form-control" type="date" placeholder="Entrega" required/>
+                                <input name="entrega" class="form-control" type="date" placeholder="Entrega"/>
                             </div>
                             <div class="form-outline mt-4">
                                 <label class="form-label" for="prioridade">Prioridade</label>

@@ -47,8 +47,8 @@
                     </div>
                 </form>
                 <div class="d-flex justify-content-center">
-                    <form action="../dashboard/projeto.php">
-                        <input type="submit" value="Cancelar" class="btn btn-danger">
+                    <form action="../crud/u_projeto.php">
+                        <a href="../dashboard/projeto.php" class="btn btn-danger mx-1">Cancelar</a>
                         <input type="submit" value="Atualizar" class="btn btn-success">
                     </form>
                 </div>

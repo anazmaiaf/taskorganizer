@@ -17,7 +17,7 @@ if(isset($_POST['user']) && isset($_POST['password']) && !empty($_POST['user']) 
         $_SESSION['id'] = $dado['iduser'];
         $_SESSION['username'] = $dado['username'];
     
-        header('Location: ../dashboard/index.php');
+        header('Location: ../index.php');
     } else {
         header('Location: loginform.php?stmt=naologado');
     }

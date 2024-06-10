@@ -20,5 +20,7 @@ if(isset($_POST['projeto']) && isset($_POST['inicio']) && isset($_POST['entrega'
 
     $result->execute();   
 
-     header("Location: ../dashboard/projeto.php?projeto=$projeto&insert=cadastrado");
-}
+     header("Location: ../dashboard/projeto.php?insert=cadastrado");
+} else {
+    header("Location: ../crud/c_projetoform.php?invalid=invalido");
+};
