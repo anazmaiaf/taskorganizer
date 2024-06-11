@@ -1,4 +1,4 @@
-<header class="p-3 mb-3 border-bottom container-sm">
+<header class="p-3 mb-3 border-bottom">
             <div class="d-flex">
                     
                 <ul class="nav me-lg-auto mb-2 justify-content-center mb-md-0">

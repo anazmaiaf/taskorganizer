@@ -10,7 +10,7 @@ require '../templates/header.php';
 require '../templates/navbar.php';   
 
 // Alert projeto deletado
-if(isset($_GET['projeto'])){
+if(isset($_GET['delete'])){
 ?>
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
     <strong>O projeto foi deletado com sucesso!</strong>
@@ -23,10 +23,9 @@ if(isset($_GET['projeto'])){
 <!-- Alert projeto cadastrado -->
 <?php
 if(isset($_GET['insert'])){
-    $projeto = $_GET['projeto'];
 ?>
 <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong><?php echo $projeto?> cadastrado(a) com sucesso!</strong>
+    <strong>O projeto foi cadastrado com sucesso!</strong>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 <?php
@@ -60,8 +59,6 @@ if(isset($_GET['insert'])){
             <tbody>
                 <?php
                 foreach ($projetos as $projeto) {
-                    $idprojeto = $projeto['idprojetos'];
-                    $nomeprojeto = $projeto['nomeprojeto'];
                     echo "<tr>";
                     echo "<th scope='row'>" . $projeto['idprojetos'] . "</th>";
                     echo "<td>" . $projeto['nomeprojeto'] . "</td>";
@@ -71,12 +68,10 @@ if(isset($_GET['insert'])){
                     echo "<td>" . $projeto['andamento'] . "</td>";
                     echo "<td>
                         <div class='d-flex'>
-                            <button type='button' class='btn btn-danger mx-2' data-idprojeto='" . $idprojeto . "' data-nomeprojeto='" . $nomeprojeto . "' data-bs-toggle='modal' data-bs-target='#modaldeletar'>
-                                Apagar
-                            </button>
-                            <form action='../crud/u_tarefaform.php' method='POST'>
-                                <input type='hidden' name='id' value='" . $idprojeto . "'>
-                                <input type='hidden' name='nome' value='". $nomeprojeto ."'>
+                            <button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#modalDeletar" . $projeto['idprojetos'] . "'>Apagar</button>
+                            <form action='../crud/u_projetoform.php' method='POST'>
+                                <input type='hidden' name='id' value='" . $projeto['idprojetos'] . "'>
+                                <input type='hidden' name='nome' value='". $projeto['nomeprojeto'] ."'>
                                 <button type='submit' class='btn btn-warning'>Editar</button>
                             </form>
                         </div> 
@@ -93,45 +88,32 @@ if(isset($_GET['insert'])){
     ?>
     </div>
 </div>
-
-<div class="modal fade" id="modaldeletar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Deseja apagar esse projeto?</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Essa ação é irreversível! Deseja continuar?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        <form action="../crud/d_projeto.php" method="post">
-            <input type="hidden" id="modal-idprojeto" name="idprojeto">
-            <input type="hidden" id="modal-nomeprojeto" name="nomeprojeto">
-            <button type="submit" class="btn btn-danger">Apagar</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    var modal = document.getElementById('modaldeletar');
-    modal.addEventListener('show.bs.modal', function(event) {
-        var button = event.relatedTarget;
-        var idprojeto = button.getAttribute('data-idprojeto');
-        var nomeprojeto = button.getAttribute('data-nomeprojeto');
-
-        var modalIdInput = document.getElementById('modal-idprojeto');
-        var modalNomeInput = document.getElementById('modal-nomeprojeto');
-
-        modalIdInput.value = idprojeto;
-        modalNomeInput.value = nomeprojeto;
-    });
-});
-</script>
-
 <?php
+foreach($projetos as $projeto){
+?>
+<div class="modal fade" id="modalDeletar<?php echo $projeto['idprojetos']; ?>" data-bs-backdrop="static"
+        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Excluir o projeto <?php echo $projeto['nomeprojeto']?>? </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <span>Está ação é irreversível e irá apagar as tarefas relacionadas.</span>
+                    <form method='post' action='../crud/d_projeto.php'>
+                        <input type='hidden' name='id' value="<?php echo $projeto['idprojetos']; ?>" />
+                        <input type='hidden' name='nome' value="<?php echo $projeto['nomeprojeto']; ?>" /> 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-danger">Excluir</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php
+}
 require '../templates/footer.php';
+?>
