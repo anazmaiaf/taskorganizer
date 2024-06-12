@@ -72,9 +72,7 @@ if(isset($_GET['insert'])){
                         echo "<td>" . $tarefa['projetos'] . "</td>";
                         echo "<td>
                         <div class='d-flex'>
-                            <button type='button' class='btn btn-danger mx-2' data-idtarefa='" . $idtarefa . "' data-nometarefa='" . $nometarefa . "' data-bs-toggle='modal' data-bs-target='#modaldeletar'>
-                                Apagar
-                            </button>
+                            <button type='button' class='btn btn-danger mx-2' data-bs-toggle='modal' data-bs-target='#modalDeletar" . $idtarefa . "'>Excluir</button>
                             <form action='../crud/u_tarefaform.php' method='POST'>
                                 <input type='hidden' name='id' value='" . $idtarefa . "'>
                                 <input type='hidden' name='nome' value='". $nometarefa ."'>
@@ -95,45 +93,31 @@ if(isset($_GET['insert'])){
     ?>
 </div>
 
-<!-- Modal deletar -->
-<div class="modal fade" id="modaldeletar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Deseja apagar essa tarefa?</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Essa ação é irreversível! Deseja continuar?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        <form action='../crud/d_tarefa.php' method='post'>
-            <input type='hidden' id="modal-idtarefa" name='idtarefa' value='<?php $tarefa['idtarefa'] ?>'>
-            <input type='hidden' id="modal-nometarefa" name='nometarefa' value='<?php $tarefa['nome'] ?>'>
-            <button type='submit' class='btn btn-danger'>Apagar</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    var modal = document.getElementById('modaldeletar');
-    modal.addEventListener('show.bs.modal', function(event) {
-        var button = event.relatedTarget;
-        var idtarefa = button.getAttribute('data-idtarefa');
-        var nometarefa = button.getAttribute('data-nometarefa');
-
-        var modalIdInput = document.getElementById('modal-idtarefa');
-        var modalNomeInput = document.getElementById('modal-nometarefa');
-
-        modalIdInput.value = idtarefa;
-        modalNomeInput.value = nometarefa;
-    });
-});
-</script>
-
 <?php
+foreach($tarefas as $tarefa){
+?>
+<div class="modal fade" id="modalDeletar<?php echo $tarefa['idtarefa']; ?>" data-bs-backdrop="static"
+        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Excluir a tarefa<?php echo $tarefa['nome']?>? </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <span>Está ação é irreversível.</span>
+                    <form method='post' action='../crud/d_tarefa.php'>
+                        <input type='hidden' name='id' value="<?php echo $tarefa['idtarefa']; ?>" />
+                        <input type='hidden' name='nome' value="<?php echo $tarefa['nome']; ?>" /> 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-danger">Excluir</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php
+}
 require '../templates/footer.php';

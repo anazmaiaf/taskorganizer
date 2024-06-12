@@ -5,9 +5,11 @@
 // Alert de campos inválidos
 if(isset($_GET['invalid'])){
 ?>
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <strong>Campos inválidos. Preencha todos corretamente.</strong>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<div class="container">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Campos inválidos. Preencha todos corretamente.</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
 </div>
 <?php
 }
@@ -33,7 +35,7 @@ if(isset($_GET['invalid'])){
                             <div class="form-outline">
                                 <label class="form-label" for="projeto">Projeto Relacionado</label>
                                 <select name="projeto" class="form-select">
-                                    <option value="1" disabled>Escolha o projeto</option>
+                                    <option value="1" selected disabled>Escolha o projeto</option>
                                     <?php 
                                     $sql = "SELECT idprojetos,nomeprojeto FROM projetos";
                                     $result = $conn->prepare($sql);
@@ -56,7 +58,7 @@ if(isset($_GET['invalid'])){
                             <div class="form-outline mt-4">
                                 <label class="form-label" for="status">Status</label>
                                 <select name="status" class="form-select">
-                                    <option value="Escolha o status">Escolha o status</option>
+                                    <option selected disabled>Escolha o status</option>
                                     <option value="A fazer">A fazer</option>
                                     <option value="Em andamento">Em andamento</option>
                                     <option value="Concluído">Concluído</option>
@@ -73,7 +75,7 @@ if(isset($_GET['invalid'])){
                             <div class="form-outline mt-4">
                                 <label class="form-label" for="prioridade">Prioridade</label>
                                 <select name="prioridade" class="form-select">
-                                    <option value="1">Escolha a prioridade</option>
+                                    <option selected disabled>Escolha a prioridade</option>
                                     <option value="Alta">Alta</option>
                                     <option value="Média">Média</option>
                                     <option value="Baixa">Baixa</option>

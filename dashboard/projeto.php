@@ -12,9 +12,11 @@ require '../templates/navbar.php';
 // Alert projeto deletado
 if(isset($_GET['delete'])){
 ?>
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <strong>O projeto foi deletado com sucesso!</strong>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<div class="container">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>O projeto foi deletado com sucesso!</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
 </div>
 <?php
 }
@@ -68,12 +70,8 @@ if(isset($_GET['insert'])){
                     echo "<td>" . $projeto['andamento'] . "</td>";
                     echo "<td>
                         <div class='d-flex'>
-                            <button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#modalDeletar" . $projeto['idprojetos'] . "'>Apagar</button>
-                            <form action='../crud/u_projetoform.php' method='POST'>
-                                <input type='hidden' name='id' value='" . $projeto['idprojetos'] . "'>
-                                <input type='hidden' name='nome' value='". $projeto['nomeprojeto'] ."'>
-                                <button type='submit' class='btn btn-warning'>Editar</button>
-                            </form>
+                            <button type='button' class='btn btn-danger mx-2' data-bs-toggle='modal' data-bs-target='#modalDeletar" . $projeto['idprojetos'] . "'>Excluir</button>
+                            <a href='../crud/u_projetoform.php' class='btn btn-warning'>Editar</a> 
                         </div> 
                         </td>";
                     echo "</tr>";
@@ -116,4 +114,3 @@ foreach($projetos as $projeto){
 <?php
 }
 require '../templates/footer.php';
-?>
