@@ -71,7 +71,7 @@ if(isset($_GET['insert'])){
                     echo "<td>
                         <div class='d-flex'>
                             <button type='button' class='btn btn-danger mx-2' data-bs-toggle='modal' data-bs-target='#modalDeletar" . $projeto['idprojetos'] . "'>Excluir</button>
-                            <a href='../crud/u_projetoform.php' class='btn btn-warning'>Editar</a> 
+                            <a class='btn btn-warning' href='../crud/u_projetoform.php?id='" . $projeto['idprojetos'] . "'>Editar</a>
                         </div> 
                         </td>";
                     echo "</tr>";

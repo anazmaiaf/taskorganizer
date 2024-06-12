@@ -1,6 +1,15 @@
 <?php
-    require '../templates/header.php';
-    require '../templates/navbar.php';
+require '../templates/header.php';
+require '../templates/navbar.php';
+
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    $id = $_GET['id'];
+    $sql = 'SELECT * FROM projetos WHERE idprojetos = :id';
+    $result = $conn->prepare($sql);
+    $stmt->bindValue(':id', $id);
+    $result->execute();
+    $projetos = $result->fetchAll(PDO::FETCH_ASSOC);
+}
 ?>
 <h1 class="text-center">Atualizar projeto</h1>
 <section>
@@ -11,7 +20,7 @@
                     <div class="row">
                         <div class="col-md-12 mb-4">
                             <div class="form-outline">
-                                <input name="projeto" class="form-control" placeholder="Projeto" required/>
+                                <input name="projeto" class="form-control" placeholder="Projeto" value="<?php echo $projetos['nomeprojeto']; ?>" required/>
                                 <label class="form-label" for="projeto">Nome do Projeto</label>
                             </div>
                         </div>
@@ -22,7 +31,7 @@
                             </div>
                             <div class="form-outline mt-4">
                                 <select class="form-select" name="status">
-                                    <option selected>Escolha o Status</option>
+                                    <option selected disabled>Escolha o Status</option>
                                     <option value="1">A fazer</option>
                                     <option value="2">Em andamento</option>
                                     <option value="3">Concluído</option>
@@ -36,8 +45,8 @@
                                 <label class="form-label" for="entrega">Data de Entrega</label>
                             </div>
                             <div class="form-outline mt-4">
-                                <select class="form-select" name="andamento">
-                                    <option selected>Escolha o andamento</option>
+                                <select class="form-select" name="andamento" required>
+                                    <option selected disabled>Escolha o andamento</option>
                                     <option value="1">Ativo</option>
                                     <option value="2">Inativo</option>
                                 </select>
@@ -45,17 +54,14 @@
                             </div>
                         </div>
                     </div>
-                </form>
-                <div class="d-flex justify-content-center">
-                    <form action="../dashboard/projeto.php">
-                        <input type="submit" value="Cancelar" class="btn btn-danger">
+                    <div class="d-flex justify-content-center">
+                        <a href="../dashboard/projeto.php" class="btn btn-danger">Cancelar</a>
                         <input type="submit" value="Atualizar" class="btn btn-success">
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </section>
 <?php
-    require '../templates/footer.php'
-?>
+    require '../templates/footer.php';
