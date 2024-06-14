@@ -2,14 +2,14 @@
 require '../templates/header.php';
 require '../templates/navbar.php';
 
-if (isset($_GET['id']) && !empty($_GET['id'])) {
-    $id = $_GET['id'];
-    $sql = 'SELECT * FROM projetos WHERE idprojetos = :id';
-    $result = $conn->prepare($sql);
-    $stmt->bindValue(':id', $id);
-    $result->execute();
-    $projetos = $result->fetchAll(PDO::FETCH_ASSOC);
-}
+if(isset($_POST['id']) && isset($_POST['projeto']) && isset($_POST['inicio']) && isset($_POST['entrega']) && isset($_POST['status']) && isset($_POST['andamento'])){
+    $id = $_POST['id'];
+    $projeto = $_POST['projeto'];
+    $inicio = $_POST['inicio'];
+    $entrega = $_POST['entrega'];
+    $status = $_POST['status'];
+    $andamento = $_POST['andamento'];
+};
 ?>
 <h1 class="text-center">Atualizar projeto</h1>
 <section>
@@ -20,18 +20,18 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                     <div class="row">
                         <div class="col-md-12 mb-4">
                             <div class="form-outline">
-                                <input name="projeto" class="form-control" placeholder="Projeto" value="<?php echo $projetos['nomeprojeto']; ?>" required/>
+                                <input name="projeto" class="form-control" placeholder="Projeto" value="<?php echo $projeto; ?>" required/>
                                 <label class="form-label" for="projeto">Nome do Projeto</label>
                             </div>
                         </div>
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
-                                <input name="inicio" type="date" class="form-control" placeholder="Início" required/>
+                                <input name="inicio" type="date" class="form-control" placeholder="Início" value="<?php echo $inicio?>" required/>
                                 <label class="form-label" for="inicio">Data de Início</label>
                             </div>
                             <div class="form-outline mt-4">
                                 <select class="form-select" name="status">
-                                    <option selected disabled>Escolha o Status</option>
+                                    <option selected disabled><?php echo $status?></option>
                                     <option value="1">A fazer</option>
                                     <option value="2">Em andamento</option>
                                     <option value="3">Concluído</option>
@@ -41,12 +41,12 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                         </div>
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
-                                <input name="entrega" type="date" class="form-control" placeholder="Entrega" required/>
+                                <input name="entrega" type="date" class="form-control" placeholder="Entrega" value="<?php echo $entrega?>" required/>
                                 <label class="form-label" for="entrega">Data de Entrega</label>
                             </div>
                             <div class="form-outline mt-4">
                                 <select class="form-select" name="andamento" required>
-                                    <option selected disabled>Escolha o andamento</option>
+                                    <option selected disabled><?php echo $andamento?></option>
                                     <option value="1">Ativo</option>
                                     <option value="2">Inativo</option>
                                 </select>

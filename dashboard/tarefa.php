@@ -73,9 +73,14 @@ if(isset($_GET['insert'])){
                         echo "<td>
                         <div class='d-flex'>
                             <button type='button' class='btn btn-danger mx-2' data-bs-toggle='modal' data-bs-target='#modalDeletar" . $idtarefa . "'>Excluir</button>
-                            <form action='../crud/u_tarefaform.php' method='POST'>
+                            <form action='../crud/u_tarefaform.php' method='post'>
                                 <input type='hidden' name='id' value='" . $idtarefa . "'>
                                 <input type='hidden' name='nome' value='". $nometarefa ."'>
+                                <input type='hidden' name='inicio' value='". $tarefa['data_inicio'] ."'>
+                                <input type='hidden' name='entrega' value='". $tarefa['data_entrega'] ."'>
+                                <input type='hidden' name='status' value='". $tarefa['status'] ."'>
+                                <input type='hidden' name='prioridade' value='". $tarefa['prioridade'] ."'>
+                                <input type='hidden' name='projetos' value='". $tarefa['projetos'] ."'>
                                 <button type='submit' class='btn btn-warning'>Editar</button>
                             </form>
                         </div> 

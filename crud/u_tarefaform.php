@@ -1,6 +1,17 @@
 <?php
     require '../templates/header.php';
     require '../templates/navbar.php';
+
+
+    if(isset($_POST['id']) && isset($_POST['nome']) && isset($_POST['inicio']) && isset($_POST['entrega']) && isset($_POST['status']) && isset($_POST['prioridade']) && isset($_POST['projetos'])){
+        $id = $_POST['id'];
+        $nome = $_POST['nome'];
+        $inicio = $_POST['inicio'];
+        $entrega = $_POST['entrega'];
+        $status = $_POST['status'];
+        $prioridade = $_POST['prioridade'];
+        $projeto = $_POST['projetos'];
+    };
 ?>
 
 <h1 class="text-center">Atualizar tarefa</h1>
@@ -13,19 +24,22 @@
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
                                 <label class="form-label" for="nome">Nome da Tarefa</label>
-                                <input name="nome" class="form-control" placeholder="Tarefa" required/>
+                                <input name="nome" class="form-control" value="<?php echo $nome; ?>" placeholder="Tarefa" required/>
                             </div>
                         </div>
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
                                 <label class="form-label" for="projeto">Projeto Relacionado</label>
                                 <select name="projeto" class="form-select">
-                                    <option value="1">Escolha o projeto</option>
+                                    <option value="<?php echo $projeto; ?>" selected disabled><?php echo $projeto; ?></option>
                                     <?php 
                                     $sql = "SELECT idprojetos,nomeprojeto FROM projetos";
-                                        foreach($conn->query($sql) as $row){
-                                            echo "<option value='" . $row['idprojetos'] . "'>" . $row['nomeprojeto'] . "</option>";
-                                        }   
+                                    $result = $conn->prepare($sql);
+                                    $result->execute();
+                                    $tarefas = $result->fetchAll(PDO::FETCH_ASSOC);
+                                    foreach ($tarefas as $tarefa) {
+                                        echo "<option value='" . $tarefa['idprojetos'] . "'>" . $tarefa['nomeprojeto'] . "</option>";
+                                    }                  
                                     ?>
                                 </select>
                             </div>
@@ -33,11 +47,12 @@
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
                                 <label class="form-label" for="inicio">Data de Início</label>
-                                <input name="inicio" class="form-control" type="date" placeholder="Início" required/>
+                                <input name="inicio" class="form-control" type="date" placeholder="Início" required value='<?php echo $inicio;?>'/>
                             </div>
                             <div class="form-outline mt-4">
                                 <label class="form-label" for="status">Status</label>
                                 <select name="status" class="form-select">
+                                    <option value='<?php echo $status; ?>' selected disabled><?php echo $status; ?></option>
                                     <option value="A fazer">A fazer</option>
                                     <option value="Em andamento">Em andamento</option>
                                     <option value="Concluído">Concluído</option>
@@ -47,11 +62,12 @@
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
                                 <label class="form-label" for="entrega">Data de Entrega</label>
-                                <input name="entrega" class="form-control" type="date" placeholder="Entrega" required/>
+                                <input name="entrega" class="form-control" type="date" placeholder="Entrega" required value='<?php echo $entrega;?>'/>
                             </div>
                             <div class="form-outline mt-4">
                                 <label class="form-label" for="prioridade">Prioridade</label>
                                 <select name="prioridade" class="form-select">
+                                    <option value='<?php echo $prioridade; ?>' selected disabled><?php echo $prioridade; ?></option>
                                     <option value="Alta">Alta</option>
                                     <option value="Média">Média</option>
                                     <option value="Baixa">Baixa</option>
