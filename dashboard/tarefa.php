@@ -14,9 +14,11 @@ require '../templates/navbar.php';
 // Alert de deletado
 if(isset($_GET['tarefa'])){
 ?>
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <strong>A tarefa foi deletada com sucesso!</strong>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<div class="container">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>A tarefa foi deletada com sucesso!</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
 </div>
 <?php
 }
@@ -24,9 +26,23 @@ if(isset($_GET['tarefa'])){
 // Alert de cadastrado
 if(isset($_GET['insert'])){
 ?>
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>A tarefa foi cadastrada com sucesso!</strong>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<div class="container">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>A tarefa foi cadastrada com sucesso!</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</div>
+<?php
+}
+
+// Alert de atualizado
+if(isset($_GET['update'])){
+?>
+<div class="container">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>A tarefa foi atualizada com sucesso!</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
 </div>
 <?php
 }
