@@ -1,15 +1,15 @@
 <?php
-    require '../templates/header.php';
-    require '../templates/navbar.php';
+require '../templates/header.php';
+require '../templates/navbar.php';
 
 if(isset($_GET['id'])){
 $id = $_GET['id'];
 
 $sql = 'SELECT * FROM tarefas WHERE idtarefa = :id';
-$stmt = $conn->prepare($sql);
-$stmt->bindParam(':id', $id);
-$stmt->execute();
-$tarefas = $stmt->fetch(PDO::FETCH_ASSOC);
+$result = $conn->prepare($sql);
+$result->bindParam(':id', $id);
+$result->execute();
+$tarefas = $result->fetch(PDO::FETCH_ASSOC);
 }
 
 // Alert de campos inválidos

@@ -36,6 +36,20 @@ if(isset($_GET['insert'])){
 }
 ?>
 
+<!-- Alert projeto atualizado -->
+<?php
+if(isset($_GET['update'])){
+?>
+<div class="container">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>O projeto foi atualizado com sucesso!</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</div>
+<?php
+}
+?>
+
 <div class="container">
     <div class="d-flex justify-content-between">
         <h1>Projetos</h1>
@@ -75,13 +89,8 @@ if(isset($_GET['insert'])){
                             <button type='button' class='btn btn-danger mx-2' data-bs-toggle='modal' data-bs-target='#modalDeletar" . $projeto['idprojetos'] . "'>Excluir</button>
                             <form action='../crud/u_projetoform.php' method='post'>
                                 <input type='hidden' name='id' value='" . $projeto['idprojetos']  . "'>
-                                <input type='hidden' name='projeto' value='". $projeto['nomeprojeto'] ."'>
-                                <input type='hidden' name='inicio' value='". $projeto['data_inicio'] ."'>
-                                <input type='hidden' name='entrega' value='". $projeto['data_entrega'] ."'>
-                                <input type='hidden' name='status' value='". $projeto['status'] ."'>
-                                <input type='hidden' name='andamento' value='". $projeto['andamento'] ."'>
-                                <button type='submit' class='btn btn-warning'>Editar</button>
                             </form>
+                            <a href='../crud/u_projetoform.php?id=" . $projeto['idprojetos']. "' class='btn btn-warning'>Editar</a>
                         </div> 
                         </td>";
                     echo "</tr>";
