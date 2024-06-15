@@ -37,7 +37,7 @@ if (!empty($projeto)) {
     </div>
     <div class="card-body">
       <h5 class="card-title text-center">Não perca o prazo!</h5>
-      <p class="card-text text-center">O seu projeto <?php echo htmlspecialchars($projeto['nomeprojeto']); ?> possui <?php echo htmlspecialchars($projeto['contIDcat']); ?> tarefas. Confira as tarefas e adiante seu projeto!</p>
+      <p class="card-text text-center">O seu projeto <?php echo htmlspecialchars($projeto['nomeprojeto']); ?> possui <?php echo htmlspecialchars($projeto['contIDcat']); ?> tarefa(s). Confira as tarefas e adiante seu projeto!</p>
       <div class="d-flex align-items-center justify-content-center">
         <button class="btn-custom mx-3" type="submit" name="submit"><a href="tarefa.php" class="text-decoration-none text-white">Vá para as Tarefas</a></button>
         <button class="btn-custom" type="submit" name="submit"><a href="projeto.php" class="text-decoration-none text-white">Vá para os Projetos</a></button>

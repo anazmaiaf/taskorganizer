@@ -1,7 +1,7 @@
 <?php
 require '../database/db_config.php';
 
-if (isset($_POST['id'])) {
+if (isset($_POST['id']) && isset($_POST['nome']) && isset($_POST['inicio']) && isset($_POST['entrega']) && isset($_POST['status']) && isset($_POST['prioridade'])) {
     $id = $_POST['id'];
     $nome = $_POST['nome'];
     $inicio = $_POST['inicio'];

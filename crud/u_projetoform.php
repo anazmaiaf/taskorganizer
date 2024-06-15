@@ -20,37 +20,38 @@ if(isset($_POST['id']) && isset($_POST['projeto']) && isset($_POST['inicio']) &&
                     <div class="row">
                         <div class="col-md-12 mb-4">
                             <div class="form-outline">
-                                <input name="projeto" class="form-control" placeholder="Projeto" value="<?php echo $projeto; ?>" required/>
                                 <label class="form-label" for="projeto">Nome do Projeto</label>
+                                <input type="hidden" name="id" value="<?php echo $id?>">
+                                <input name="projeto" class="form-control" placeholder="Projeto" value="<?php echo $projeto; ?>" required/>
                             </div>
                         </div>
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
-                                <input name="inicio" type="date" class="form-control" placeholder="Início" value="<?php echo $inicio?>" required/>
                                 <label class="form-label" for="inicio">Data de Início</label>
+                                <input name="inicio" type="date" class="form-control" placeholder="Início" value="<?php echo $inicio?>" required/>
                             </div>
                             <div class="form-outline mt-4">
+                                <label class="form-label" for="status">Status</label>
                                 <select class="form-select" name="status">
                                     <option selected disabled><?php echo $status?></option>
-                                    <option value="1">A fazer</option>
-                                    <option value="2">Em andamento</option>
-                                    <option value="3">Concluído</option>
+                                    <option value="A fazer">A fazer</option>
+                                    <option value="Em andamento">Em andamento</option>
+                                    <option value="Concluído">Concluído</option>
                                 </select>
-                                <label class="form-label" for="status">Status</label>
                             </div>
                         </div>
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
-                                <input name="entrega" type="date" class="form-control" placeholder="Entrega" value="<?php echo $entrega?>" required/>
                                 <label class="form-label" for="entrega">Data de Entrega</label>
+                                <input name="entrega" type="date" class="form-control" placeholder="Entrega" value="<?php echo $entrega?>" required/>
                             </div>
                             <div class="form-outline mt-4">
+                                <label class="form-label" for="andamento">Andamento</label>
                                 <select class="form-select" name="andamento" required>
                                     <option selected disabled><?php echo $andamento?></option>
-                                    <option value="1">Ativo</option>
-                                    <option value="2">Inativo</option>
+                                    <option value="Ativo">Ativo</option>
+                                    <option value="Inativo">Inativo</option>
                                 </select>
-                                <label class="form-label" for="andamento">Andamento</label>
                             </div>
                         </div>
                     </div>
