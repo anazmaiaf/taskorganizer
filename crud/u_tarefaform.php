@@ -3,14 +3,14 @@
     require '../templates/navbar.php';
 
 
-    if(isset($_POST['id']) && isset($_POST['nome']) && isset($_POST['inicio']) && isset($_POST['entrega']) && isset($_POST['status']) && isset($_POST['prioridade']) && isset($_POST['projetos'])){
+    if(isset($_POST['id']) && isset($_POST['nome']) && isset($_POST['inicio']) && isset($_POST['entrega']) && isset($_POST['status']) && isset($_POST['prioridade'])){
         $id = $_POST['id'];
         $nome = $_POST['nome'];
         $inicio = $_POST['inicio'];
         $entrega = $_POST['entrega'];
         $status = $_POST['status'];
         $prioridade = $_POST['prioridade'];
-        $projeto = $_POST['projetos'];
+        $projeto = $_POST['projeto'];
     };
 ?>
 
@@ -24,6 +24,7 @@
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
                                 <label class="form-label" for="nome">Nome da Tarefa</label>
+                                <input type="hidden" name="id" value="<?php echo $id?>">
                                 <input name="nome" class="form-control" value="<?php echo $nome; ?>" placeholder="Tarefa" required/>
                             </div>
                         </div>

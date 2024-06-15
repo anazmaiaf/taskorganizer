@@ -80,7 +80,7 @@ if(isset($_GET['insert'])){
                                 <input type='hidden' name='entrega' value='". $tarefa['data_entrega'] ."'>
                                 <input type='hidden' name='status' value='". $tarefa['status'] ."'>
                                 <input type='hidden' name='prioridade' value='". $tarefa['prioridade'] ."'>
-                                <input type='hidden' name='projetos' value='". $tarefa['projetos'] ."'>
+                                <input type='hidden' name='projeto' value='". $tarefa['projetos'] ."'>
                                 <button type='submit' class='btn btn-warning'>Editar</button>
                             </form>
                         </div> 

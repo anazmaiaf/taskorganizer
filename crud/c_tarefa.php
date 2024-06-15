@@ -21,4 +21,6 @@ if(isset($_POST['nome']) && isset($_POST['inicio']) && isset($_POST['entrega']) 
     $result->execute();   
 
     header("Location: ../dashboard/tarefa.php?insert=cadastrado");
+}else{
+    header('Location: c_tarefaform.php?invalid=erro');
 };
