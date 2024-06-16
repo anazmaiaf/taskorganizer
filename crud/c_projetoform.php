@@ -40,7 +40,7 @@ if(isset($_GET['invalid'])){
                                     <option selected disabled>Escolha o Status</option>
                                     <option value="A fazer">A fazer</option>
                                     <option value="Em andamento">Em andamento</option>
-                                    <option value="concluído">Concluído</option>
+                                    <option value="Concluído">Concluído</option>
                                 </select>
                             </div>
                         </div>

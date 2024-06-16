@@ -87,10 +87,15 @@ if(isset($_GET['update'])){
                     echo "<td>
                         <div class='d-flex'>
                             <button type='button' class='btn btn-danger mx-2' data-bs-toggle='modal' data-bs-target='#modalDeletar" . $projeto['idprojetos'] . "'>Excluir</button>
-                            <form action='../crud/u_projetoform.php' method='post'>
-                                <input type='hidden' name='id' value='" . $projeto['idprojetos']  . "'>
+                            <form action='../crud/u_projetoform.php' method='get'>
+                                <input type='hidden' name='id' value='" . $projeto['idprojetos']  . "'
+                                <input type='hidden' name='nome' value='" . $projeto['nomeprojeto']  . "'
+                                <input type='hidden' name='inicio' value='" . $projeto['data_inicio']  . "'
+                                <input type='hidden' name='entrega' value='" . $projeto['data_entrega']  . "'
+                                <input type='hidden' name='status' value='" . $projeto['status']  . "'
+                                <input type='hidden' name='andamento' value='" . $projeto['andamento']  . "'
                             </form>
-                            <a href='../crud/u_projetoform.php?id=" . $projeto['idprojetos']. "' class='btn btn-warning'>Editar</a>
+                            <a href='../crud/u_projetoform.php?id=" . $projeto['idprojetos']. "&status=". $projeto['status'] ."&andamento=".$projeto['andamento']."' class='btn btn-warning'>Editar</a>
                         </div> 
                         </td>";
                     echo "</tr>";

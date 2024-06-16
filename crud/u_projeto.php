@@ -23,5 +23,6 @@ if(isset($_POST['id']) && isset($_POST['projeto']) && isset($_POST['inicio']) &&
 
     header('Location: ../dashboard/projeto.php?update=ok');
 } else{
-    header('Location: u_projetoform.php?invalid=error');
+    $id = $_POST['id'];
+    header("Location: u_projetoform.php?invalid=error&id=$id");
 }

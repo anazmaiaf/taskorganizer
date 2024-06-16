@@ -25,5 +25,6 @@ if (isset($_POST['id']) && isset($_POST['nome']) && isset($_POST['inicio']) && i
 
     header('Location: ../dashboard/tarefa.php?update=ok');
 } else {
-    header('Location: u_tarefaform.php?invalid=error');
+    $id = $_POST['id'];
+    header("Location: u_tarefaform.php?invalid=error&id=$id");
 }

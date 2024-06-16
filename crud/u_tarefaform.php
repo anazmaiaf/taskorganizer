@@ -3,14 +3,13 @@ require '../templates/header.php';
 require '../templates/navbar.php';
 
 if(isset($_GET['id'])){
-$id = $_GET['id'];
-
-$sql = 'SELECT * FROM tarefas WHERE idtarefa = :id';
-$result = $conn->prepare($sql);
-$result->bindParam(':id', $id);
-$result->execute();
-$tarefas = $result->fetch(PDO::FETCH_ASSOC);
-}
+    $id = $_GET['id'];
+    $sql = 'SELECT * FROM tarefas WHERE idtarefa = :id';
+    $result = $conn->prepare($sql);
+    $result->bindParam(':id', $id);
+    $result->execute();
+    $tarefas = $result->fetch(PDO::FETCH_ASSOC);
+} 
 
 // Alert de campos inválidos
 if(isset($_GET['invalid'])){
@@ -46,19 +45,20 @@ if(isset($_GET['invalid'])){
                             <div class="form-outline">
                                 <label class="form-label" for="projeto">Projeto Relacionado</label>
                                 <select name="projeto" class="form-select">
-                                    <?php 
-                                    $sql_proj = "SELECT idprojetos,nomeprojeto FROM projetos";
-                                    $result_proj = $conn->prepare($sql_proj);
-                                    $result_proj->execute();
-                                    $projetos = $result_proj->fetchAll(PDO::FETCH_ASSOC);
-                                    foreach ($projetos as $proj) {
-                                        if ($proj["idprojetos"] == $tarefa["idtarefa"]) {
-                                            echo "<option value='" . $proj["idprojetos"] . "' selected>" . $proj["nomeprojeto"] . "</option>";
-                                          } else {
-                                            echo "<option value='" . $proj["idprojetos"] . "'>" . $proj["nomeprojeto"] . "</option>";
-                                          }
+                                <?php 
+                                $sql_proj = "SELECT idprojetos, nomeprojeto FROM projetos";
+                                $result_proj = $conn->prepare($sql_proj);
+                                $result_proj->execute();
+                                $projetos = $result_proj->fetchAll(PDO::FETCH_ASSOC);
+                                foreach ($projetos as $proj) {
+                                    if ($proj["nomeprojeto"] == $_GET['proj']) {
+                                        echo "<option value='" . $proj["idprojetos"] . "' selected>" . $proj["nomeprojeto"] . "</option>";
+                                    } else {
+                                        echo "<option value='" . $proj["idprojetos"] . "'>" . $proj["nomeprojeto"] . "</option>";
                                     }
-                                    ?>
+                                }
+                                ?>
+
                                 </select>
                             </div>
                         </div>
@@ -72,10 +72,10 @@ if(isset($_GET['invalid'])){
                             <div class="form-outline mt-4">
                                 <label class="form-label" for="status">Status</label>
                                 <select name="status" class="form-select">
-                                    <option selected disabled <?php echo $tarefas['status']?>><?php echo $tarefas['status']?></option>
-                                    <option value="A fazer">A fazer</option>
-                                    <option value="Em andamento">Em andamento</option>
-                                    <option value="Concluído">Concluído</option>
+                                    <option value="A fazer" <?php if($tarefas['status'] === 'A fazer') echo 'selected'; ?>>A fazer</option>
+                                    <option value="Em andamento" <?php if($tarefas['status'] === 'Em andamento') echo 'selected'; ?>>Em andamento</option>
+                                    <option value="Concluído" <?php if($tarefas['status'] === 'Concluído') echo 'selected'; ?>>Concluído</option>
+                                </select>
                                 </select>
                             </div>
                         </div>
@@ -89,10 +89,9 @@ if(isset($_GET['invalid'])){
                             <div class="form-outline mt-4">
                                 <label class="form-label" for="prioridade">Prioridade</label>
                                 <select name="prioridade" class="form-select">
-                                    <option selected disabled value="<?php echo $tarefas['prioridade']?>"><?php echo $tarefas['prioridade']?></option>
-                                    <option value="Alta">Alta</option>
-                                    <option value="Média">Média</option>
-                                    <option value="Baixa">Baixa</option>
+                                    <option value="Alta" <?php if($tarefas['prioridade'] === 'Alta') echo 'selected'; ?>>Alta</option>
+                                    <option value="Média" <?php if($tarefas['prioridade'] === 'Média') echo 'selected'; ?>>Média</option>
+                                    <option value="Baixa" <?php if($tarefas['prioridade'] === 'Baixa') echo 'selected'; ?>>Baixa</option>
                                 </select>
                             </div>
                         </div>
@@ -100,7 +99,7 @@ if(isset($_GET['invalid'])){
 
                     <div class="d-flex justify-content-center">
                         <a href="../dashboard/tarefa.php" class="btn btn-danger mx-1">Cancelar</a>
-                        <input type="submit" value="Cadastrar" class="btn btn-success">
+                        <input type="submit" value="Atualizar" class="btn btn-success">
                     </div>
                 </form>
             </div>
