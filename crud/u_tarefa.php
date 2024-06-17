@@ -1,7 +1,15 @@
 <?php
 require '../database/db_config.php';
 
-if (isset($_POST['id']) && isset($_POST['nome']) && isset($_POST['inicio']) && isset($_POST['entrega']) && isset($_POST['status']) && isset($_POST['prioridade'])) {
+if (
+    isset($_POST['id']) && !empty($_POST['id']) &&
+    isset($_POST['nome']) && !empty($_POST['nome']) &&
+    isset($_POST['inicio']) && !empty($_POST['inicio']) &&
+    isset($_POST['entrega']) && !empty($_POST['entrega']) &&
+    isset($_POST['status']) && !empty($_POST['status']) &&
+    isset($_POST['prioridade']) && !empty($_POST['prioridade']) &&
+    isset($_POST['projeto']) && !empty($_POST['projeto'])
+) {
     $id = $_POST['id'];
     $nome = $_POST['nome'];
     $inicio = $_POST['inicio'];
@@ -10,7 +18,7 @@ if (isset($_POST['id']) && isset($_POST['nome']) && isset($_POST['inicio']) && i
     $prioridade = $_POST['prioridade'];
     $projeto = $_POST['projeto'];
 
-    $sql = 'UPDATE tarefas SET  nome = :nome, data_inicio = :inicio, data_entrega = :entrega, prioridade = :prioridade, status = :status, projetos_idprojetos = :projeto WHERE idtarefa = :id';
+    $sql = 'UPDATE tarefas SET nome = :nome, data_inicio = :inicio, data_entrega = :entrega, prioridade = :prioridade, status = :status, projetos_idprojetos = :projeto WHERE idtarefa = :id';
 
     $result = $conn->prepare($sql);
     $result->bindValue(':id', $id);
@@ -26,5 +34,5 @@ if (isset($_POST['id']) && isset($_POST['nome']) && isset($_POST['inicio']) && i
     header('Location: ../dashboard/tarefa.php?update=ok');
 } else {
     $id = $_POST['id'];
-    header("Location: u_tarefaform.php?invalid=error&id=$id");
-}
+    header("Location: ../crud/u_tarefaform.php?invalid=error&id=$id");
+};

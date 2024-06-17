@@ -9,7 +9,6 @@ if(isset($_GET['id'])){
     $result->bindParam(':id', $id);
     $result->execute();
     $projeto = $result->fetch(PDO::FETCH_ASSOC);
-    var_dump($projeto);
 }
 
 // Alert de campos inválidos

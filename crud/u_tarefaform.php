@@ -2,7 +2,7 @@
 require '../templates/header.php';
 require '../templates/navbar.php';
 
-if(isset($_GET['id'])){
+if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $sql = 'SELECT * FROM tarefas WHERE idtarefa = :id';
     $result = $conn->prepare($sql);
@@ -12,7 +12,7 @@ if(isset($_GET['id'])){
 } 
 
 // Alert de campos inválidos
-if(isset($_GET['invalid'])){
+if (isset($_GET['invalid'])) {
 ?>
 <div class="container">
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -35,8 +35,8 @@ if(isset($_GET['invalid'])){
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
                                 <label class="form-label" for="nome">Nome da Tarefa</label>
-                                <input name=id type="hidden" value="<?php echo $tarefas['idtarefa']?>">
-                                <input name="nome" class="form-control" placeholder="Tarefa" value="<?php echo $tarefas['nome']?>"/>
+                                <input name="id" type="hidden" value="<?php echo $tarefas['idtarefa'] ?>">
+                                <input name="nome" class="form-control" placeholder="Tarefa" value="<?php echo $tarefas['nome'] ?>" />
                             </div>
                         </div>
 
@@ -45,20 +45,19 @@ if(isset($_GET['invalid'])){
                             <div class="form-outline">
                                 <label class="form-label" for="projeto">Projeto Relacionado</label>
                                 <select name="projeto" class="form-select">
-                                <?php 
-                                $sql_proj = "SELECT idprojetos, nomeprojeto FROM projetos";
-                                $result_proj = $conn->prepare($sql_proj);
-                                $result_proj->execute();
-                                $projetos = $result_proj->fetchAll(PDO::FETCH_ASSOC);
-                                foreach ($projetos as $proj) {
-                                    if ($proj["nomeprojeto"] == $_GET['proj']) {
-                                        echo "<option value='" . $proj["idprojetos"] . "' selected>" . $proj["nomeprojeto"] . "</option>";
-                                    } else {
-                                        echo "<option value='" . $proj["idprojetos"] . "'>" . $proj["nomeprojeto"] . "</option>";
+                                    <?php 
+                                    $sql_proj = "SELECT idprojetos, nomeprojeto FROM projetos";
+                                    $result_proj = $conn->prepare($sql_proj);
+                                    $result_proj->execute();
+                                    $projetos = $result_proj->fetchAll(PDO::FETCH_ASSOC);
+                                    foreach ($projetos as $proj) {
+                                        if ($proj["nomeprojeto"] == $_GET['proj']) {
+                                            echo "<option value='" . $proj["idprojetos"] . "' selected>" . $proj["nomeprojeto"] . "</option>";
+                                        } else {
+                                            echo "<option value='" . $proj["idprojetos"] . "'>" . $proj["nomeprojeto"] . "</option>";
+                                        }
                                     }
-                                }
-                                ?>
-
+                                    ?>
                                 </select>
                             </div>
                         </div>
@@ -67,7 +66,7 @@ if(isset($_GET['invalid'])){
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
                                 <label class="form-label" for="inicio">Data de Início</label>
-                                <input name="inicio" class="form-control" type="date" placeholder="Início" value="<?php echo $tarefas['data_inicio']?>"/>
+                                <input name="inicio" class="form-control" type="date" placeholder="Início" value="<?php echo $tarefas['data_inicio'] ?>" />
                             </div>
                             <div class="form-outline mt-4">
                                 <label class="form-label" for="status">Status</label>
@@ -76,7 +75,6 @@ if(isset($_GET['invalid'])){
                                     <option value="Em andamento" <?php if($tarefas['status'] === 'Em andamento') echo 'selected'; ?>>Em andamento</option>
                                     <option value="Concluído" <?php if($tarefas['status'] === 'Concluído') echo 'selected'; ?>>Concluído</option>
                                 </select>
-                                </select>
                             </div>
                         </div>
 
@@ -84,7 +82,7 @@ if(isset($_GET['invalid'])){
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
                                 <label class="form-label" for="entrega">Data de Entrega</label>
-                                <input name="entrega" class="form-control" type="date" placeholder="Entrega" value="<?php echo $tarefas['data_entrega']?>"/>
+                                <input name="entrega" class="form-control" type="date" placeholder="Entrega" value="<?php echo $tarefas['data_entrega'] ?>" />
                             </div>
                             <div class="form-outline mt-4">
                                 <label class="form-label" for="prioridade">Prioridade</label>
@@ -107,5 +105,5 @@ if(isset($_GET['invalid'])){
     </div>
 </section>
 <?php
-    require '../templates/footer.php';
+require '../templates/footer.php';
 ?>
