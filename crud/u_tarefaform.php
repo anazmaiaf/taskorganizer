@@ -51,10 +51,10 @@ if (isset($_GET['invalid'])) {
                                     $result_proj->execute();
                                     $projetos = $result_proj->fetchAll(PDO::FETCH_ASSOC);
                                     foreach ($projetos as $proj) {
-                                        if ($proj["nomeprojeto"] == $_GET['proj']) {
-                                            echo "<option value='" . $proj["idprojetos"] . "' selected>" . $proj["nomeprojeto"] . "</option>";
+                                        if ($proj["idprojetos"] == $_GET['idproj']) {
+                                            echo "<option value='" . $proj["idprojetos"] . "' selected>" . $proj['nomeprojeto'] . "</option>";
                                         } else {
-                                            echo "<option value='" . $proj["idprojetos"] . "'>" . $proj["nomeprojeto"] . "</option>";
+                                            echo "<option value='" . $proj["idprojetos"] . "'>" . $proj['nomeprojeto'] . "</option>";
                                         }
                                     }
                                     ?>

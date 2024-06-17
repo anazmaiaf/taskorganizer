@@ -98,7 +98,7 @@ if(isset($_GET['update'])){
                                 <input type='hidden' name='prioridade' value='" . $tarefa['prioridade'] . "'>
                                 <input type='hidden' name='projetos' value='" . $tarefa['projetos'] . "'>
                             </form>
-                            <a href='../crud/u_tarefaform.php?id=$idtarefa?proj=". $tarefa['projetos'] ."' class='btn btn-warning'>Editar</a>
+                            <a href='../crud/u_tarefaform.php?id=$idtarefa?proj=". $tarefa['projetos'] ."&idproj=".$tarefa['idprojetos']."' class='btn btn-warning'>Editar</a>
                         </div> 
                         </td>";
                     echo "</tr>";
